@@ -51,9 +51,13 @@
                                 
                             </a>      
                         </div> btn-group -->
-
-                        <div class="btn-group btn-group-list btn-group-notification">
+                            <div class="btn-group btn-group-list btn-group-notification">
+                                
+                        <?php if(getNotifProducts() == 0) {?>
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <?php } else { ?>
+                                <button type="button" class="btn btn-default dropdown-toggle orange" data-toggle="dropdown">
+                        <?php } ?>
                               <i class="fa fa-bell-o"></i>
                               <span class="badge">
                                 <?php echo getNotifProducts(); ?>
