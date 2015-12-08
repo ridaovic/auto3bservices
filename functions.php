@@ -78,6 +78,31 @@ function getProduct($ref)
     return $produit;
 }
 
+function isMinqteSupQte($ref)
+{
+     $produit = getProduct($ref);
+     if($produit['qte_min'] >= $produit['qte'])
+         return true;
+        else
+         return false;
+}
+
+function getNotifProducts()
+{   
+    $result = mysql_query("SELECT count(*) FROM produits WHERE qte_min>=qte") or die(mysql_error());
+    $count = mysql_fetch_array($result);
+    return $count[0];
+}
+
+
+function getAllProductsNotif()
+{
+     $result = mysql_query("SELECT * FROM produits WHERE qte_min>=qte") or die(mysql_error());
+     $produits = array();
+     while($row = mysql_fetch_array($result))
+        $produits[] = $row;   
+    return $produits;
+}
 
 
 function messageFlash()

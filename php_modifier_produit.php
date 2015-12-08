@@ -18,15 +18,15 @@ if ( !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min'])
 
     if ($result>0) { 
         $response["success"] = 1;
-        $response["message"] = "modification effectué avec succès";    
+        $response["message"] = "Modification effectué avec succès";    
     }else{
         $response["success"] = 2;
-        $response["message"] = "modification n'est pas effectuée";
+        $response["message"] = "Modification n'est pas effectuée";
     }
 
 }else{
     $response["success"] = 2;
-    $response["message"] = "tous les champs sont obligatoires";
+    $response["message"] = "Tous les champs sont obligatoires";
 }        
 
 echo json_encode($response);

@@ -49,27 +49,25 @@ require_once __DIR__ . '/header.php'; ?>
                             </div><!-- col-sm-6 -->
                         </div><!-- row -->
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Quantite</label>
                                     <input type="number" name="qte" id="qte" class="form-control" value="<?php echo $produit['qte']; ?>"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Quantite minimal</label>
                                     <input type="number" name="qte_min" id="qte_min" class="form-control" value="<?php echo $produit['qte_min']; ?>"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
-                        </div><!-- row -->
-                        <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Prix</label>
-                                    <input type="email" name="prix" id="prix" class="form-control" value="<?php echo $produit['prix']; ?>"/>
+                                    <input type="number" name="prix" id="prix" class="form-control" value="<?php echo $produit['prix']; ?>"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
-                         </div><!-- col-sm-6 -->
+                        </div><!-- row -->
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">

@@ -81,7 +81,7 @@ a:focus {
 /**************************************/
 
 .headerwrapper {
-    background-color: #41868f;
+    background-color: #1C65A5;
     min-height: 60px;
     position: fixed;
     width: 100%;
@@ -509,7 +509,8 @@ a:focus {
 .leftpanel .nav > li.active > a,
 .leftpanel .nav > li.active > a:hover {
     color: #fff;
-    background-color: #41868f;
+    /*background-color: #41868f;*/
+	background-color: #20619A;
 }
 
 .leftpanel .nav > li > a i {
@@ -624,7 +625,7 @@ a:focus {
 .pageheader .pageicon {
     width: 50px;
     height: 50px;
-    background-color: #4e5154;
+    background-color: #777;
     display: inline-block;
     color: #fff;
     font-size: 32px;
@@ -2488,7 +2489,7 @@ table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
     box-shadow: none !important;
 }
  td i{
-  width: 20px;
+  width: 14px;
   margin-right: 5px;
   font-size: 20px;
   top: 1px;
@@ -2996,7 +2997,7 @@ table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
 /***** 9.7 SIGN IN/UP PAGE *****/
 
 body.signin {
-    background-color: #41868f;
+    background-color: #1C65A5;
 }
 
 .panel-signin,
@@ -3249,7 +3250,7 @@ body.signin {
 }
 
 .mainwrapper.collapsed .nav > li.active > a > span:not(.badge) {
-    background-color: #41868f;
+    background-color: #2369A7;
     border: 0;
     height: 44px;
     top: 0;
@@ -3692,6 +3693,14 @@ body.signin {
 
 }
 
+.orange{background-color: #EC9400 !important;}
 
+/*.orange_t{ background-color: rgba(236, 148, 0, 0.5); !important;}*/
+.warning_red{ background-color: #F2DEDE !important;}
+
+
+   
 
 .red{background-color: red !important;}
+
+.blue_b{background-color: #006AB3;}

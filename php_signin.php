@@ -25,13 +25,13 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $_SESSION['id']=$result['id'];
     }else{
         $response["success"] = 2;
-        $response["message"] = "username ou mot de passe incorrect";
+        $response["message"] = "Identifiant ou le mot de passe est incorrect";
     }
     
 }else{
 
     $response["success"] = 2;
-    $response["message"] = "tous les champs sont obligatoires";
+    $response["message"] = "Tous les champs sont obligatoires";
 
 }        
 

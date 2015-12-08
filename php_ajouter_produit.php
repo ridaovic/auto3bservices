@@ -9,28 +9,45 @@ $response = array();
 
 if ( !empty($_POST['ref']) && !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min']) && !empty($_POST['prix']) ) {
 
-    $ref=$_POST['ref'];
-    $nom=$_POST['nom'];
-    $qte=$_POST['qte'];
-    $qte_min=$_POST['qte_min'];
-    $prix=$_POST['prix'];
-    
-     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES ('$ref', '$nom', $prix, $qte, $qte_min)");
-
-    
-    if ($result) {    
-        $response["success"] = 1;
-        $response["message"] = "opération effectué avec succès";
-    }else{
+    if($_POST['qte'] < $_POST['qte_min']){
         $response["success"] = 2;
-        $response["message"] = "opération n'est pas effectuée";
+        $response["message"] = "La quantité du produit doit être supérieure au minimum";
+        
+    }  else if($_POST['qte'] <= 0){
+        $response["success"] = 2;
+        $response["message"] = "La quantité du produit doit être supérieure ou égal à zero";
+        
+    } else {
+    
+        $ref=$_POST['ref'];
+        $nom=$_POST['nom'];
+        $qte=$_POST['qte'];
+        $qte_min=$_POST['qte_min'];
+        $prix=$_POST['prix'];
+
+         // mysql inserting a new row
+        $result = mysql_query("INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES ('$ref', '$nom', $prix, $qte, $qte_min)");
+
+
+        if ($result) {    
+            $response["success"] = 1;
+            $response["message"] = "Opération effectué avec succès";
+        }else{
+            $response["success"] = 2;
+            $response["message"] = "Opération n'est pas effectuée";
+        }
     }
     
+    
 }else{
-
-    $response["success"] = 2;
-    $response["message"] = "tous les champs sont obligatoires";
+    if($_POST['qte'] == 0 || $_POST['qte_min'] <= 0 || $_POST['prix'] <= 0 ){
+        $response["success"] = 2;
+        $response["message"] = "La quantité du produit doit être supérieure ou égal à zero";
+    } else {
+        $response["success"] = 2;
+    $response["message"] = "Tous les champs sont obligatoires";
+    }
+    
 
 }        
 

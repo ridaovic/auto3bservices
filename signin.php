@@ -1,6 +1,6 @@
 <?php session_start();
 if (!empty($_SESSION['id'])) {
-    header("Location:users");
+    header("Location:produits");
 }?>
 
 
@@ -31,7 +31,7 @@ if (!empty($_SESSION['id'])) {
             <div class="panel panel-signin">
                 <div class="panel-body">
                     <div class="logo text-center">
-                        <img src="images/logo-primary.png" alt="Chain Logo" >
+                        <img src="images/logo.gif" style="margin-top: -45px;" alt="Chain Logo" >
                     </div>
                     <br />
                     <div class="mb30"  id="erreur">
@@ -50,7 +50,7 @@ if (!empty($_SESSION['id'])) {
                         
                         <div class="clearfix">
                             <div class="pull-right">
-                                <button type="button" class="btn btn-success" id="login">Connexion <i class="fa fa-angle-right ml5"></i></button>
+                                <button type="button" class="btn btn-success" id="login" style="background-color: #f0ad4e;">Connexion <i class="fa fa-angle-right ml5"></i></button>
                             </div>
                         </div>                      
                     </form>
