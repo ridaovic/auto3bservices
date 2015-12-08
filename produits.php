@@ -21,17 +21,22 @@ require_once __DIR__ . '/header.php'; ?>
     <div class="contentpanel">
         <div class="panel panel-primary-head">
             <div>
-                <?php if ($_SESSION['success'] == 1): ?>
+                <?php
+                if (isset($_SESSION['success'])) {
+                 
+                 if ($_SESSION['success'] == 1) { ?>
                     <div class="alert alert-success">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <strong><?php echo $_SESSION['message'];  $_SESSION['message']="";$_SESSION['success']=""; ?></strong>
                     </div>
-                <?php elseif ($_SESSION['success'] == 2): ?>
+                <?php } elseif ($_SESSION['success'] == 2){ ?>
                     <div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <strong><?php echo $_SESSION['message']; $_SESSION['message']="";$_SESSION['success']=""; ?></strong>
                     </div>
-                <?php endif ?>
+                <?php } 
+                }
+                ?>
                 
 
                 
