@@ -74,7 +74,7 @@
                                 <?php } ?>
                                 </ul>
                                 <div class="dropdown-footer text-center">
-                                    <a href="notif_produits.php" class="link">See All Notifications</a>
+                                    <a href="notif_produits.php" class="link" style="color:#1C65A5;">Voir toutes les notifications</a>
                                 </div>
                             </div><!-- dropdown-menu -->
                         </div>
