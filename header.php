@@ -1,7 +1,7 @@
 <?php
-/*if (empty($_SESSION['id'])) {
+if (empty($_SESSION['id'])) {
     header("Location:signin.php");
-}*/?>
+}?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,9 +112,6 @@
                     <ul class="nav nav-pills nav-stacked">                        
                         <li class="parent active"><a href="#"><i class="fa fa-car"></i> <span>Produits</span></a>
                             <ul class="children">
-                                <?php 
-                                       ; 
-                                 ?>
                                 <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/produits.php') { echo 'active';} ?>"><a href="produits.php">Liste des produits</a></li>
                                 <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/ajouter_produit.php') { echo 'active';} ?>"><a href="ajouter_produit.php">Ajouter produit</a></li>
                             </ul>
