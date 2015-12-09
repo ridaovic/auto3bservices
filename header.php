@@ -1,7 +1,7 @@
 <?php
-/*if (empty($_SESSION['id'])) {
+if (empty($_SESSION['id'])) {
     header("Location:signin.php");
-}*/?>
+}?>
 
 <!DOCTYPE html>
 <html lang="en">
