@@ -110,13 +110,21 @@ if (empty($_SESSION['id'])) {
                 <div class="leftpanel"> 
                     <h5 class="leftpanel-title">Navigation</h5>
                     <ul class="nav nav-pills nav-stacked">                        
-                        <li class="parent active"><a href="#"><i class="fa fa-car"></i> <span>Produits</span></a>
+                        <li class="parent <?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/produits.php' || $_SERVER['REQUEST_URI']  == '/auto3bservices/ajouter_produit.php' ) { echo 'active';} ?>"><a href="produits.php"><i class="fa fa-car"></i> <span>Produits</span></a>
                             <ul class="children">
                                 <?php 
                                        ; 
                                  ?>
                                 <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/produits.php') { echo 'active';} ?>"><a href="produits.php">Liste des produits</a></li>
                                 <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/ajouter_produit.php') { echo 'active';} ?>"><a href="ajouter_produit.php">Ajouter produit</a></li>
+                            </ul>
+                        </li>
+                        <li class="parent <?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/factures.php') { echo 'active';} ?>"><a href="factures.php"><i class="fa fa-file-text"></i> <span>Factures</span></a>
+                            <ul class="children">
+                                <?php 
+                                       ; 
+                                 ?>
+                                <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/factures.php') { echo 'active';} ?>"><a href="factures.php">Liste des factures</a></li>
                             </ul>
                         </li>
                     </ul>
