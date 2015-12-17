@@ -5,14 +5,14 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-if ( !empty($_POST['date_fact']) && !empty($_POST['nom']) 
+if ( !empty($_POST['num_fact']) && !empty($_POST['date_fact']) && !empty($_POST['nom']) 
     && !empty($_POST['prenom']) && !empty($_POST['immatriculation']) 
     && !empty($_POST['marque_voiture']) && !empty($_POST['designation']) 
     && !empty($_POST['qte']) && !empty($_POST['etat_facture']) 
     && !empty($_POST['prix']) && !empty($_POST['montant']) 
     && !empty($_POST['total']) 
     ) {
-echo 'oooooooooooooooooooooooooooook';
+
     $num_fact=$_POST['num_fact'];
     $date_fact=$_POST['date_fact'];
     $nom=$_POST['nom'];

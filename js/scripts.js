@@ -102,7 +102,6 @@ $('#edit_facture').on('click', function(e) {
         var montant = $('#montant').val();
         var total = $('#total').val();
         
-        alert("in");
         if (date_fact!="" && nom!="" && 
             prenom!="" && immatriculation!="" && 
             marque_voiture!="" && designation!="" && 
@@ -111,7 +110,7 @@ $('#edit_facture').on('click', function(e) {
             ) {
 
             $.post( "php_modifier_facture.php", { num_fact : num_fact, date_fact : date_fact, nom : nom , prenom : prenom , immatriculation : immatriculation , marque_voiture : marque_voiture , designation : designation , qte : qte , etat_facture : etat_facture , prix : prix , montant : montant, total : total}, function( data ) {
-alert("in2");
+
             if (data.success==1) {
                 $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
             } else{
