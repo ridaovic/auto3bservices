@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 
     // modifier produit
-    $('#edit_produit').on('click', function(e) {   
+    $('#edit_produit').on('click', function(e) {
         // // Je récupère les valeurs
         var ref = $('#ref').val();
         var nom = $('#nom').val();
@@ -71,6 +71,47 @@ $(document).ready(function() {
 
             $.post( "php_modifier_produit.php", { ref : ref, nom : nom , qte : qte , qte_min : qte_min , prix : prix}, function( data ) {
 
+            if (data.success==1) {
+                $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
+            } else{
+                $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
+            };
+            
+          },"json");    
+
+        }else{
+                $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
+        }
+    });    
+
+$('#edit_facture').on('click', function(e) {
+        // // Je récupère les valeurs
+        var num_fact = $('#num_fact').val();
+        var date_fact = $('#date_fact').val();
+        var nom = $('#nom').val();
+
+        var prenom = $('#prenom').val();
+        var immatriculation = $('#immatriculation').val();
+        var marque_voiture = $('#marque_voiture').val();
+        var designation = $('#designation').val();
+
+        var qte = $('#qte').val();
+        var etat_facture = $('#etat_facture').val();
+        var prix = $('#prix').val();
+
+        var montant = $('#montant').val();
+        var total = $('#total').val();
+        
+        alert("in");
+        if (date_fact!="" && nom!="" && 
+            prenom!="" && immatriculation!="" && 
+            marque_voiture!="" && designation!="" && 
+            qte!="" && etat_facture!="" && 
+            prix!="" && montant!="" && total!="" 
+            ) {
+
+            $.post( "php_modifier_facture.php", { num_fact : num_fact, date_fact : date_fact, nom : nom , prenom : prenom , immatriculation : immatriculation , marque_voiture : marque_voiture , designation : designation , qte : qte , etat_facture : etat_facture , prix : prix , montant : montant, total : total}, function( data ) {
+alert("in2");
             if (data.success==1) {
                 $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
             } else{

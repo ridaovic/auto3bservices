@@ -38,8 +38,8 @@ require_once __DIR__ . '/header.php'; ?>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label"> Référence</label>
-                                    <input type="text" name="num_fact" id="num_fact" class="form-control" value="<?php echo $facture['num_fact']; ?>" />
+                                    <label class="control-label">Numéro de facture</label>
+                                    <input type="text" name="num_fact" id="num_fact" class="form-control" value="<?php echo $facture['num_fact']; ?>" disabled/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-4">
@@ -78,10 +78,16 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
 
                         <div class="row">
-                            <div class="col-sm-8">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Désignation</label>
                                     <input type="text" name="designation" id="designation" class="form-control" value="<?php echo $facture['designation']; ?>" style="height: 41px;"/>
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                             <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">État</label>
+                                    <input type="text" name="etat_facture" id="etat_facture" class="form-control" value="<?php echo $facture['etat_facture']; ?>" style="height: 41px;"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-4">
@@ -116,7 +122,7 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="edit_produit">Modifier</button>
+                        <button type="button" class="btn btn-primary" id="edit_facture">Modifier</button>
                     </div><!-- panel-footer -->
                     </form>
                 </div><!-- panel -->

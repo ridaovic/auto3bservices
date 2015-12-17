@@ -53,6 +53,7 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Marque de voiture</th>
                         <th>Désignation</th>
                         <th>Quantité</th>
+                        <th>État</th>
                         <th>Prix U.T HT</th>
                         <th>Montant HT</th>
                         <th>Total</th>
@@ -73,6 +74,7 @@ require_once __DIR__ . '/header.php'; ?>
                               <td><?php echo $facture['marque_voiture']; ?> </td>
                               <td><?php echo $facture['designation']; ?> </td>
                               <td><?php echo $facture['qte']; ?> </td>
+                              <td><?php echo $facture['etat_facture']; ?> </td>
                               <td><?php echo $facture['prix']; ?> </td>
                               <td><?php echo $facture['montant']; ?> </td>
                               <td><?php echo $facture['total']; ?> </td>
