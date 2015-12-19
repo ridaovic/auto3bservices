@@ -78,6 +78,21 @@ function getProduct($ref)
     return $produit;
 }
 
+function getAllFactures()
+{
+     $result = mysql_query("SELECT * FROM factures ") or die(mysql_error());
+     $factures = array();
+     while($row = mysql_fetch_array($result))
+        $factures[] = $row;   
+    return $factures;
+}
+
+function getFacture($num_fact)
+{
+     $result = mysql_query("SELECT * FROM factures where num_fact='$num_fact' ") or die(mysql_error());
+     $facture = mysql_fetch_array($result);
+    return $facture;
+}
 function isMinqteSupQte($ref)
 {
      $produit = getProduct($ref);
