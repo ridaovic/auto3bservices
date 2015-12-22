@@ -38,7 +38,8 @@ CREATE TABLE `factures` (
   `etat_facture` varchar(10) NOT NULL,
   `prix` float NOT NULL,
   `montant` float NOT NULL,
-  `total` float NOT NULL
+  `total` float NOT NULL,
+   PRIMARY KEY (`num_fact`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
