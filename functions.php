@@ -124,4 +124,16 @@ function messageFlash()
 {
      
 }
+
+//  les fonction pour table vehicule
+
+function getAllVehicules()
+{
+     $result = mysql_query("SELECT * FROM vehicules ") or die(mysql_error());
+     $vihecules = array();
+     while($row = mysql_fetch_array($result))
+        $vihecules[] = $row;   
+    return $vihecules;
+}
+
 ?>

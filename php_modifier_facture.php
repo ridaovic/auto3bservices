@@ -28,8 +28,10 @@ if ( !empty($_POST['num_fact']) && !empty($_POST['date_fact']) && !empty($_POST[
     $total=$_POST['total'];
     
      // mysql inserting a new row
-    $result = mysql_query("UPDATE `factures` SET `date_fact` = '$date_fact', `nom` = '$nom', `prenom` = '$prenom', `immatriculation` = '$immatriculation', `marque_voiture` = '$marque_voiture', `designation` = '$designation', `qte` = '$qte', `etat_facture` = '$etat_facture', `prix` = '$prix',  `montant` = '$montant',  `total` = '$total', 
+    $result = mysql_query("UPDATE `factures` SET `date_fact` = '$date_fact', `nom` = '$nom', `prenom` = '$prenom', `immatriculation` = '$immatriculation', `marque_voiture` = '$marque_voiture', `designation` = '$designation', `qte` = '$qte', `etat_facture` = '$etat_facture', `prix` = '$prix',  `montant` = '$montant',  `total` = '$total'
                                                  WHERE `num_fact` = '$num_fact' ");
+
+
 
     if ($result>0) { 
         $response["success"] = 1;

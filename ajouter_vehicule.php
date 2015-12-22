@@ -51,6 +51,7 @@ require_once __DIR__ . '/header.php'; ?>
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-4">
                                 <div class="form-group">
+                                    #datepicker<input type="text" class="form-control hasDatepicker" placeholder="mm/dd/yyyy" id="datepicker">
                                     <label class="control-label">Quantite minimal</label>
                                     <input type="number" name="qte_min" id="qte_min" class="form-control" />
                                 </div><!-- form-group -->
