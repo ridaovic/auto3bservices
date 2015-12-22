@@ -65,8 +65,8 @@ require_once __DIR__ . '/header.php'; ?>
                               <td class="warning_red"><?php echo $produit['qte']; ?> </td>
                               <td class="warning_red"><?php echo $produit['qte_min']; ?> </td>
                               <td class="warning_red"><?php echo $produit['prix']; ?> </td>
-                              <td class="center warning_red"><a class="btn btn-primary blue_b" href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
-                              <td class="center warning_red"><a class="btn btn-primary blue_b" href="php_supprimer_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-trash-o"></i></a></td>
+                              <td class="center warning_red"><a class="btn btn-primary blue_b btn-rounded" href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
+                              <td class="center warning_red"><a class="btn btn-primary blue_b btn-rounded" href="php_supprimer_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         <?php } else { ?>
                             <tr>
@@ -75,8 +75,8 @@ require_once __DIR__ . '/header.php'; ?>
                               <td><?php echo $produit['qte']; ?> </td>
                               <td><?php echo $produit['qte_min']; ?> </td>
                               <td><?php echo $produit['prix']; ?> </td>
-                              <td class="center"><a class="btn btn-primary blue_b" href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
-                              <td class="center"><a class="btn btn-primary blue_b" href="php_supprimer_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-trash-o"></i></a></td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="php_supprimer_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-trash-o"></i></a></td>
                     </tr>
                         <?php } ?>
                               

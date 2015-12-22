@@ -124,11 +124,10 @@ if (empty($_SESSION['id'])) {
                             </ul>
                         </li>
     
-                        <li class="parent <?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/factures.php' || $_SERVER['REQUEST_URI'] == '/auto3bservices/ajouter_facture.php' ) { echo 'active';} ?>"><a href="factures.php"><i class="fa fa-file-text"></i> <span>Factures</span></a>
-                            <ul class="children">
-                                <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/factures.php') { echo 'active';} ?>"><a href="factures.php">Liste des factures</a></li>
-                                <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/ajouter_facture.php') { echo 'active';} ?>"><a href="ajouter_facture.php">Ajouter une facture</a></li>
-                            </ul>
+                        <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/factures.php' ) { echo 'active';} ?>"><a href="factures.php"><i class="fa fa-file-pdf-o"></i> <span>Factures</span></a>
+                        </li>
+
+                        <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/devis.php' ) { echo 'active';} ?>"><a href="devis.php"><i class="fa fa-file-text"></i> <span>Devis</span></a>
                         </li>
                     </ul>
                     

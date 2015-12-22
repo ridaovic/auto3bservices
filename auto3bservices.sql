@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 22 Décembre 2015 à 21:40
+-- Généré le :  Mar 22 Décembre 2015 à 23:42
 -- Version du serveur :  5.6.26
 -- Version de PHP :  5.6.12
 
@@ -23,33 +23,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `devis`
+--
+
+CREATE TABLE IF NOT EXISTS `devis` (
+  `id` int(11) NOT NULL,
+  `date_devis` date DEFAULT NULL,
+  `date_accord` date DEFAULT NULL,
+  `ht` double NOT NULL,
+  `hta` double NOT NULL,
+  `id_vehicule` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `devis`
+--
+
+INSERT INTO `devis` (`id`, `date_devis`, `date_accord`, `ht`, `hta`, `id_vehicule`) VALUES
+(8, '2015-12-23', '2015-12-31', 20, 30, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `factures`
 --
 
 CREATE TABLE IF NOT EXISTS `factures` (
   `num_fact` varchar(25) NOT NULL,
   `date_fact` date NOT NULL,
-  `nom` varchar(25) NOT NULL,
-  `prenom` varchar(25) NOT NULL,
-  `immatriculation` varchar(25) NOT NULL,
-  `marque_voiture` varchar(25) NOT NULL,
   `designation` varchar(50) NOT NULL,
   `qte` int(10) NOT NULL,
   `etat_facture` varchar(10) NOT NULL,
   `prix` float NOT NULL,
   `montant` float NOT NULL,
-  `total` float NOT NULL
+  `total` float NOT NULL,
+  `id_vehicule` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `factures`
 --
 
-INSERT INTO `factures` (`num_fact`, `date_fact`, `nom`, `prenom`, `immatriculation`, `marque_voiture`, `designation`, `qte`, `etat_facture`, `prix`, `montant`, `total`) VALUES
-('00001', '2015-12-25', 'rida', 'rhanim', '01', 'fiat', '001', 2, 'actives', 1000, 2000, 1000),
-('i123', '2015-12-24', 'rida', 'rhanim', '01', 'volvo', '001', 2, 'active', 1500, 1500, 1000),
-('n123', '2015-12-26', 'rida', 'rhanim', 'i123456', 'volvo', 'test', 4, 'Non payÃ©', 4, 4, 4),
-('n123321', '2015-12-26', 'rida', 'rhanim', 'i123', 'test', 'test', 3, 'PayÃ©', 3, 4, 3);
+INSERT INTO `factures` (`num_fact`, `date_fact`, `designation`, `qte`, `etat_facture`, `prix`, `montant`, `total`, `id_vehicule`) VALUES
+('00001', '2015-12-25', '001', 2, 'actives', 1000, 2000, 1000, 7),
+('i123', '2015-12-24', '001', 2, 'active', 1500, 1500, 1000, 1),
+('n123', '2015-12-26', 'test', 4, 'Non payÃ©', 4, 4, 4, 5),
+('n123321', '2015-12-26', 'test', 3, 'PayÃ©', 3, 4, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -131,6 +150,12 @@ INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `ex
 --
 
 --
+-- Index pour la table `devis`
+--
+ALTER TABLE `devis`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `factures`
 --
 ALTER TABLE `factures`
@@ -158,6 +183,11 @@ ALTER TABLE `vehicules`
 -- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `devis`
+--
+ALTER TABLE `devis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `users`
 --

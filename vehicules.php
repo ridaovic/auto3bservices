@@ -52,8 +52,9 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Assurance</th>
                         <th>Date entrée</th>
                         <th>Date sortie</th>
-                        <th>Generer devis</th>
                         <th>Generer facture</th>
+                        <th>Generer devis</th>
+                        
                         
                     </tr>
                 </thead>
@@ -69,8 +70,9 @@ require_once __DIR__ . '/header.php'; ?>
                               <td><?php echo $vehicule['assurance']; ?> </td>
                               <td><?php echo $vehicule['date_entree']; ?> </td>
                               <td><?php echo $vehicule['date_sortie']; ?> </td>
-                              <td> </td>
-                              <td> </td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="generer_facture.php?id=<?php echo $vehicule['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="generer_devis.php?id=<?php echo $vehicule['id']; ?>"><i class="fa fa-file-text"></i></a></td>
+                  
                            </tr>
                     <?php } ?> 
                 </tbody>

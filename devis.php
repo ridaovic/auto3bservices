@@ -11,9 +11,9 @@ require_once __DIR__ . '/header.php'; ?>
             <div class="media-body">
                 <ul class="breadcrumb">
                     <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="#">Factures</a></li>
+                    <li><a href="#">Devises</a></li>
                 </ul>
-                <h4>Factures</h4>
+                <h4>Devises</h4>
             </div>
         </div><!-- media -->
     </div><!-- pageheader -->
@@ -45,39 +45,29 @@ require_once __DIR__ . '/header.php'; ?>
             <table id="basicTable" class="table table-striped table-bordered responsive">
                 <thead class="">
                     <tr>
-                        <th>Numero de facture</th>
-                        <th>date de la facture</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
+                        <th>Nom et prenom</th>
                         <th>Immatriculation</th>
-                        <th>Marque de voiture</th>
-                        <th>Désignation</th>
-                        <th>Quantité</th>
-                        <th>État</th>
-                        <th>Prix U.T HT</th>
-                        <th>Montant HT</th>
-                        <th>Total</th>
+                        <th>Marque</th>
+                        <th>Expére</th>
+                        <th>Assurance</th>
+                        <th>Date entrée</th>
+                        <th>Date sortie</th>                       
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
-                      $factures= getAllFactures();
-                      foreach($factures as $facture){ ?> 
-                            <tr>
-                              <td><?php echo $facture['num_fact']; ?> </td>
-                              <td><?php echo $facture['date_fact']; ?> </td>
-                              <td><?php echo $facture['nom']; ?> </td>
-                              <td><?php echo $facture['prenom']; ?> </td>
-                              <td><?php echo $facture['immatriculation']; ?> </td>
-                              <td><?php echo $facture['marque']; ?> </td>
-                              <td><?php echo $facture['designation']; ?> </td>
-                              <td><?php echo $facture['qte']; ?> </td>
-                              <td><?php echo $facture['etat_facture']; ?> </td>
-                              <td><?php echo $facture['prix']; ?> </td>
-                              <td><?php echo $facture['montant']; ?> </td>
-                              <td><?php echo $facture['total']; ?> </td>
-                          </tr>
-                        <?php } ?> 
+                      $devises= getAllDevis();
+                      foreach($devises as $devis){ ?> 
+                        <tr>
+                              <td><?php echo ($devis['nom']." ".$devis['prenom']); ?> </td>
+                              <td><?php echo $devis['immatriculation']; ?> </td>
+                              <td><?php echo $devis['marque']; ?> </td>
+                              <td><?php echo $devis['expere']; ?> </td>
+                              <td><?php echo $devis['assurance']; ?> </td>
+                              <td><?php echo $devis['date_entree']; ?> </td>
+                              <td><?php echo $devis['date_sortie']; ?> </td>
+                           </tr>
+                    <?php } ?> 
                 </tbody>
             </table>
         </div><!-- panel -->

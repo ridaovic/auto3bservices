@@ -80,7 +80,7 @@ function getProduct($ref)
 
 function getAllFactures()
 {
-     $result = mysql_query("SELECT * FROM factures ") or die(mysql_error());
+     $result = mysql_query("SELECT * FROM factures , `vehicules` WHERE factures.id_vehicule=vehicules.id") or die(mysql_error());
      $factures = array();
      while($row = mysql_fetch_array($result))
         $factures[] = $row;   
@@ -136,4 +136,15 @@ function getAllVehicules()
     return $vihecules;
 }
 
+
+//  les fonctions pour table devis
+
+function getAllDevis()
+{
+     $result = mysql_query("SELECT * FROM `devis` , `vehicules` WHERE devis.id_vehicule=vehicules.id") or die(mysql_error());
+     $vihecules = array();
+     while($row = mysql_fetch_array($result))
+        $vihecules[] = $row;   
+    return $vihecules;
+}
 ?>
