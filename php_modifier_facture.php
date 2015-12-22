@@ -35,7 +35,7 @@ if ( !empty($_POST['num_fact']) && !empty($_POST['date_fact']) && !empty($_POST[
 
     if ($result>0) { 
         $response["success"] = 1;
-        $response["message"] = "Modification effectué avec succès";    
+        $response["message"] = "Modification effectuée avec succès";    
     }else{
         $response["success"] = 2;
         $response["message"] = "Modification n'est pas effectuée";

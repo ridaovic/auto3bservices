@@ -31,7 +31,7 @@ require_once __DIR__ . '/header.php'; ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label"> Référence</label>
+                                    <label class="control-label">Référence</label>
                                     <input type="text" name="ref" id="ref" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
