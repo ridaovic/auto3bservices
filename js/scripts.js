@@ -49,20 +49,6 @@ $(document).ready(function() {
             $.post( "php_ajouter_facture.php", { num_fact : num_fact, date_fact : date_fact , nom : nom , prenom : prenom , immatriculation : immatriculation, marque_voiture : marque_voiture, designation : designation , qte : qte , etat_facture : etat_facture , prix : prix , montant : montant , total : total }, function( data ) {
 
             if (data.success==1) {
-                
-                var num_fact = $('#num_fact').val();
-                var date_fact = $('#date_fact').val();
-                var nom = $('#nom').val();
-                var prenom = $('#prenom').val();
-                var immatriculation = $('#immatriculation').val();
-                var marque_voiture = $('#marque_voiture').val();
-                var designation = $('#designation').val();
-                var qte = $('#qte').val();
-                var etat_facture = $('#etat_facture').val();
-                var prix = $('#prix').val();
-                var montant = $('#montant').val();
-                var total = $('#total').val();
-
 
                 //vider les champs apres submission
                 $('#num_fact').val("");
@@ -91,6 +77,7 @@ $(document).ready(function() {
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
         }
     });
+
     // ajouter produit
     $('#add_produit').on('click', function(e) {   
         // // Je récupère les valeurs
@@ -124,6 +111,46 @@ $(document).ready(function() {
         }
     });
     
+
+
+    // ajouter vehicule
+    $('#add_vehicule').on('click', function(e) {   
+        // // Je récupère les valeurs
+        var nom = $('#nom').val();
+        var prenom = $('#prenom').val();
+        var  mat= $('#mat').val();
+        var marque = $('#marque').val();
+        var ass = $('#ass').val();
+        var exp = $('#exp').val();
+        var de = $('#de').val();
+        var ds = $('#ds').val();
+       
+        if (nom!="" && prenom!="" && mat!="" && marque!="" && ass!="" && exp!="") {
+
+            $.post( "php_ajouter_vehicule.php", { nom : nom, prenom : prenom , mat : mat , marque : marque , ass : ass, exp : exp, de : de, ds : ds}, function( data ) {
+
+            if (data.success==1) {
+                
+                $('#nom').val("");
+                $('#prenom').val("");
+                $('#mat').val("");
+                $('#marque').val("");
+                $('#ass').val("");
+                $('#exp').val("");
+                $('#de').val("");
+                $('#ds').val("");
+
+                $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
+            } else{
+                $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
+            };
+            
+          },"json");    
+
+        }else{
+                $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
+        }
+    });
 
 
     // modifier produit

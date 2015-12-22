@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.4.14
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 18 Décembre 2015 à 09:44
--- Version du serveur :  10.0.17-MariaDB
--- Version de PHP :  5.6.14
+-- Généré le :  Mar 22 Décembre 2015 à 21:40
+-- Version du serveur :  5.6.26
+-- Version de PHP :  5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `factures`
 --
 
-CREATE TABLE `factures` (
+CREATE TABLE IF NOT EXISTS `factures` (
   `num_fact` varchar(25) NOT NULL,
   `date_fact` date NOT NULL,
   `nom` varchar(25) NOT NULL,
@@ -38,8 +38,7 @@ CREATE TABLE `factures` (
   `etat_facture` varchar(10) NOT NULL,
   `prix` float NOT NULL,
   `montant` float NOT NULL,
-  `total` float NOT NULL,
-   PRIMARY KEY (`num_fact`)
+  `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -47,7 +46,10 @@ CREATE TABLE `factures` (
 --
 
 INSERT INTO `factures` (`num_fact`, `date_fact`, `nom`, `prenom`, `immatriculation`, `marque_voiture`, `designation`, `qte`, `etat_facture`, `prix`, `montant`, `total`) VALUES
-('00001', '2015-12-03', 'Client_nom', 'Client_prenom', 'immatriculation_1', 'volvo', 'designation_1', 1, '', 1500, 1500, 1500);
+('00001', '2015-12-25', 'rida', 'rhanim', '01', 'fiat', '001', 2, 'actives', 1000, 2000, 1000),
+('i123', '2015-12-24', 'rida', 'rhanim', '01', 'volvo', '001', 2, 'active', 1500, 1500, 1000),
+('n123', '2015-12-26', 'rida', 'rhanim', 'i123456', 'volvo', 'test', 4, 'Non payÃ©', 4, 4, 4),
+('n123321', '2015-12-26', 'rida', 'rhanim', 'i123', 'test', 'test', 3, 'PayÃ©', 3, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -55,7 +57,7 @@ INSERT INTO `factures` (`num_fact`, `date_fact`, `nom`, `prenom`, `immatriculati
 -- Structure de la table `produits`
 --
 
-CREATE TABLE `produits` (
+CREATE TABLE IF NOT EXISTS `produits` (
   `ref` varchar(250) NOT NULL DEFAULT '',
   `nom` varchar(250) NOT NULL,
   `prix` float NOT NULL,
@@ -68,11 +70,8 @@ CREATE TABLE `produits` (
 --
 
 INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES
-('zzzz', 'zzzzzz', 120, 1, 6),
-('dds', 'sssssssshh', 123, 3, 15),
-('f', 'd', 46, 14, 12),
-('mmmmmmmm', 'mmmmmmmmmm', 20, 15, 5),
-('okok', 'okok', 222, 12, 2);
+('ref1', 'prod1', 8, 17, 14),
+('ref2', 'prod2', 6, 9, 3);
 
 -- --------------------------------------------------------
 
@@ -80,14 +79,14 @@ INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES
 -- Structure de la table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `users`
@@ -95,6 +94,37 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `nom`, `prenom`) VALUES
 (18, 'ridaovic', 'rida.rhanim@gmail.com', 'R!d@2015', 'rhanim', 'rida');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vehicules`
+--
+
+CREATE TABLE IF NOT EXISTS `vehicules` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `prenom` varchar(100) NOT NULL,
+  `immatriculation` varchar(100) NOT NULL,
+  `marque` varchar(100) NOT NULL,
+  `expere` varchar(100) NOT NULL,
+  `assurance` varchar(100) NOT NULL,
+  `date_entree` date DEFAULT NULL,
+  `date_sortie` date DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `vehicules`
+--
+
+INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `expere`, `assurance`, `date_entree`, `date_sortie`) VALUES
+(1, 'rida rhanim', '', 'B123456', 'fiat', 'jawad', 'saham', '2015-12-08', '0000-00-00'),
+(2, 'rhanim rida', '', 'b123456', 'fiat', 'jawad', 'saham', '2015-12-23', '0000-00-00'),
+(3, 'rhanim', 'rida', 'i123', 'fiat', 'ridaovic', 'saham', '2015-12-09', '2015-12-12'),
+(4, 'rida', 'rhanim', 'azer', 'toyota', 'ridaovic', 'saham', '0000-00-00', '0000-00-00'),
+(5, 'rida', 'rhanim', 'azer', 'toyota', 'ridaovic', 'saham', '0000-00-00', '0000-00-00'),
+(6, 'rida', 'rhanim', 'azer', 'toyota', 'ridaovic', 'saham', '0000-00-00', '0000-00-00'),
+(7, 'rhanim', 'rida', 'mat1', 'fiat', 'exp1', 'ass1', '2015-12-23', '2015-12-31');
 
 --
 -- Index pour les tables exportées
@@ -119,6 +149,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `vehicules`
+--
+ALTER TABLE `vehicules`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -126,7 +162,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT pour la table `vehicules`
+--
+ALTER TABLE `vehicules`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

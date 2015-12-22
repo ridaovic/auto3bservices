@@ -11,10 +11,10 @@ require_once __DIR__ . '/header.php'; ?>
             <div class="media-body">
                 <ul class="breadcrumb">
                     <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="produits.php">Produits</a></li>
-                    <li>Ajout d'un produit</li>
+                    <li><a href="vehicules.php">Vehicules</a></li>
+                    <li>Ajout d'une vehicule</li>
                 </ul>
-                <h4>Ajout d'un produit</h4>
+                <h4>Ajout d'une vehicule</h4>
             </div>
         </div><!-- media -->
     </div><!-- pageheader -->
@@ -24,49 +24,70 @@ require_once __DIR__ . '/header.php'; ?>
                 <form>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Ajouter un produit</h4>
+                        <h4 class="panel-title">Ajouter une vehicule</h4>
                     </div>
                     <div class="panel-body">
                         <div id="erreur"></div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label"> Référence</label>
-                                    <input type="text" name="ref" id="ref" class="form-control" />
+                                    <label class="control-label">Nom</label>
+                                    <input type="text" name="nom" id="nom" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">Nom du produit</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" />
+                                    <label class="control-label">Prenom</label>
+                                    <input type="text" name="prenom" id="prenom" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                         </div><!-- row -->
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">Quantite</label>
-                                    <input type="number" name="qte" id="qte" class="form-control" />
+                                    <label class="control-label">Immatriculation</label>
+                                    <input type="text" name="mat" id="mat" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    #datepicker<input type="text" class="form-control hasDatepicker" placeholder="mm/dd/yyyy" id="datepicker">
-                                    <label class="control-label">Quantite minimal</label>
-                                    <input type="number" name="qte_min" id="qte_min" class="form-control" />
+                                    <label class="control-label">Marque</label>
+                                    <input type="text" name="marque" id="marque" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
+                        </div><!-- row -->
+                        <div class="row">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">Prix</label>
-                                    <input type="number" name="prix" id="prix" class="form-control" />
+                                    <label class="control-label">Assurance</label>
+                                    <input type="text" name="ass" id="ass" class="form-control" />
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Expére</label>
+                                    <input type="text" name="exp" id="exp" class="form-control" />
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                        </div><!-- row -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Date entrée</label>
+                                    <input type="date" name="de" id="de" class="form-control" />
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Date sortie</label>
+                                    <input type="date" name="ds" id="ds" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                         </div><!-- row -->
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="add_produit" style="background-color:#1C65A5;">Ajouter</button>
+                        <button type="button" class="btn btn-primary" id="add_vehicule" style="background-color:#1C65A5;">Ajouter</button>
                         <button type="reset" class="btn btn-default">Annuler</button>
                     </div><!-- panel-footer -->
                     </form>

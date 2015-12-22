@@ -7,26 +7,20 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-if ( !empty($_POST['ref']) && !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min']) && !empty($_POST['prix']) ) {
-
-    if($_POST['qte'] < $_POST['qte_min']){
-        $response["success"] = 2;
-        $response["message"] = "La quantité du produit doit être supérieure au minimum";
-        
-    }  else if($_POST['qte'] <= 0){
-        $response["success"] = 2;
-        $response["message"] = "La quantité du produit doit être supérieure ou égal à zero";
-        
-    } else {
+if ( !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mat']) && !empty($_POST['marque']) && !empty($_POST['ass']) && !empty($_POST['exp']) ) {
     
-        $ref=$_POST['ref'];
         $nom=$_POST['nom'];
-        $qte=$_POST['qte'];
-        $qte_min=$_POST['qte_min'];
-        $prix=$_POST['prix'];
+        $prenom=$_POST['prenom'];
+        $mat=$_POST['mat'];
+        $marque=$_POST['marque'];
+        $ass=$_POST['ass'];
+        $exp=$_POST['exp'];
+        $de=$_POST['de'];
+        $ds=$_POST['ds'];
 
-         // mysql inserting a new row
-        $result = mysql_query("INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES ('$ref', '$nom', $prix, $qte, $qte_min)");
+        // mysql inserting a new row
+        $result = mysql_query("INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `expere`, `assurance`, `date_entree`, `date_sortie`) 
+            VALUES (NULL, '$nom', '$prenom', '$mat', '$marque', '$exp', '$ass', '$de', '$ds')");
 
 
         if ($result) {    
@@ -36,19 +30,9 @@ if ( !empty($_POST['ref']) && !empty($_POST['nom']) && !empty($_POST['qte']) && 
             $response["success"] = 2;
             $response["message"] = "Opération n'est pas effectuée";
         }
-    }
-    
-    
 }else{
-    if($_POST['qte'] == 0 || $_POST['qte_min'] <= 0 || $_POST['prix'] <= 0 ){
-        $response["success"] = 2;
-        $response["message"] = "La quantité du produit doit être supérieure ou égal à zero";
-    } else {
-        $response["success"] = 2;
+    $response["success"] = 2;
     $response["message"] = "Tous les champs sont obligatoires";
-    }
-    
-
 }        
 
 echo json_encode($response);

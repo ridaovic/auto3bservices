@@ -48,10 +48,13 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Nom et prenom</th>
                         <th>Immatriculation</th>
                         <th>Marque</th>
-                        <th>Date entrée</th>
                         <th>Expére</th>
-                        <th>Date sortie</th>
                         <th>Assurance</th>
+                        <th>Date entrée</th>
+                        <th>Date sortie</th>
+                        <th>Generer devis</th>
+                        <th>Generer facture</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -59,13 +62,15 @@ require_once __DIR__ . '/header.php'; ?>
                       $vehicules= getAllVehicules();
                       foreach($vehicules as $vehicule){ ?> 
                         <tr>
-                              <td><?php echo $vehicule['nom']; ?> </td>
+                              <td><?php echo ($vehicule['nom']." ".$vehicule['prenom']); ?> </td>
                               <td><?php echo $vehicule['immatriculation']; ?> </td>
                               <td><?php echo $vehicule['marque']; ?> </td>
                               <td><?php echo $vehicule['expere']; ?> </td>
                               <td><?php echo $vehicule['assurance']; ?> </td>
                               <td><?php echo $vehicule['date_entree']; ?> </td>
                               <td><?php echo $vehicule['date_sortie']; ?> </td>
+                              <td> </td>
+                              <td> </td>
                            </tr>
                     <?php } ?> 
                 </tbody>

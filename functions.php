@@ -125,7 +125,7 @@ function messageFlash()
      
 }
 
-//  les fonction pour table vehicule
+//  les fonctions pour table vehicule
 
 function getAllVehicules()
 {
