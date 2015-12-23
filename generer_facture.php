@@ -30,9 +30,8 @@ require_once __DIR__ . '/header.php'; ?>
                         <?php 
                         if (isset($_GET['id'])) {
                             $vehicule= getVehiculeByID($_GET['id']);
-                            $facture= getFactureByVehiculeID($_GET['id']); // NO !!
-
-                            if (!$facture) {
+                            
+                            if (!$vehicule) {
                                 echo("<script>location.href = 'factures.php';</script>");
                             }
                         }
@@ -97,25 +96,25 @@ require_once __DIR__ . '/header.php'; ?>
                            <div class="col-sm-3">
                                 <div class="form-group">
                                     <label class="control-label">Quantité</label>
-                                    <input type="number" name="qte" id="qte" class="form-control" value="<?php echo $facture['qte']; ?>" style="height: 41px;"/>
+                                    <input type="number" name="qte" id="qte" class="form-control" value="" style="height: 41px;"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label class="control-label">Prix  U.T HT</label>
-                                    <input type="number" name="prix" id="prix" class="form-control" value="<?php echo $facture['prix']; ?>" style="height: 41px;"/>
+                                    <input type="number" name="prix" id="prix" class="form-control" value="" style="height: 41px;"/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label class="control-label">Montant HT</label>
-                                    <input type="number" name="montant" id="montant" class="form-control" value="<?php echo $facture['montant']; ?>"/>
+                                    <input type="number" name="montant" id="montant" class="form-control" value=""/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label class="control-label">Total</label>
-                                    <input type="number" name="total" id="total" class="form-control" value="<?php echo $facture['total']; ?>"/>
+                                    <input type="number" name="total" id="total" class="form-control" value=""/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                         </div><!-- row -->

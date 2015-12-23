@@ -89,10 +89,11 @@ function getAllFactures()
 
 function getFacture($num_fact)
 {
-     $result = mysql_query("SELECT * FROM factures where num_fact='$num_fact' ") or die(mysql_error());
+     $result = mysql_query("SELECT * FROM factures , vehicules where factures.num_fact = '$num_fact' and factures.id_vehicule = vehicules.id ") or die(mysql_error());
      $facture = mysql_fetch_array($result);
     return $facture;
 }
+
 function isMinqteSupQte($ref)
 {
      $produit = getProduct($ref);

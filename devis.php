@@ -59,14 +59,14 @@ require_once __DIR__ . '/header.php'; ?>
                       $devises= getAllDevis();
                       foreach($devises as $devis){ ?> 
                         <tr>
-                              <td><?php echo ($devis['nom']." ".$devis['prenom']); ?> </td>
-                              <td><?php echo $devis['immatriculation']; ?> </td>
-                              <td><?php echo $devis['marque']; ?> </td>
-                              <td><?php echo $devis['expere']; ?> </td>
-                              <td><?php echo $devis['assurance']; ?> </td>
-                              <td><?php echo $devis['date_entree']; ?> </td>
-                              <td><?php echo $devis['date_sortie']; ?> </td>
-                           </tr>
+                          <td><?php echo ($devis['nom']." ".$devis['prenom']); ?> </td>
+                          <td><?php echo $devis['immatriculation']; ?> </td>
+                          <td><?php echo $devis['marque']; ?> </td>
+                          <td><?php echo $devis['expere']; ?> </td>
+                          <td><?php echo $devis['assurance']; ?> </td>
+                          <td><?php echo $devis['date_entree']; ?> </td>
+                          <td><?php echo $devis['date_sortie']; ?> </td>
+                       </tr>
                     <?php } ?> 
                 </tbody>
             </table>

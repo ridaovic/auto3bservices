@@ -57,6 +57,7 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Prix U.T HT</th>
                         <th>Montant HT</th>
                         <th>Total</th>
+                        <th>Impression</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,6 +77,7 @@ require_once __DIR__ . '/header.php'; ?>
                               <td><?php echo $facture['prix']; ?> </td>
                               <td><?php echo $facture['montant']; ?> </td>
                               <td><?php echo $facture['total']; ?> </td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['num_fact']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                           </tr>
                         <?php } ?> 
                 </tbody>
