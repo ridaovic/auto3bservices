@@ -48,7 +48,7 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Nom et prenom</th>
                         <th>Immatriculation</th>
                         <th>Marque</th>
-                        <th>Expére</th>
+                        <th>Expert</th>
                         <th>Assurance</th>
                         <th>Date entrée</th>
                         <th>Date sortie</th>

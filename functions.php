@@ -136,7 +136,21 @@ function getAllVehicules()
     return $vihecules;
 }
 
+function getVehiculeByID($id)
+{
+     $result = mysql_query("SELECT * FROM vehicules where id=$id") or die(mysql_error());
+     $vehicule = array();
+     while($row = mysql_fetch_array($result))
+        $vehicule = $row;   
+    return $vehicule;
+}
 
+function getFactureByVehiculeID($id)
+{
+     $result = mysql_query("SELECT f.* FROM factures f join vehicules v where f.id_vehicule = $id ") or die(mysql_error());
+     $facture = mysql_fetch_array($result);
+    return $facture;
+}
 //  les fonctions pour table devis
 
 function getAllDevis()
