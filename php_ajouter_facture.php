@@ -7,8 +7,6 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-echo(count($_POST['designation']));
-
 if (!empty($_POST['vehicule'])) {
     $vehicule=$_POST['vehicule'];
     // mysql inserting a new row

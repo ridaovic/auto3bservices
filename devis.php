@@ -52,6 +52,7 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Assurance</th>
                         <th>Date entrée</th>
                         <th>Date sortie</th>                       
+                        <th>Calculer</th>                       
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,7 @@ require_once __DIR__ . '/header.php'; ?>
                           <td><?php echo $devis['assurance']; ?> </td>
                           <td><?php echo $devis['date_entree']; ?> </td>
                           <td><?php echo $devis['date_sortie']; ?> </td>
+                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" onclick="alert('la différence entre le montant de devis et le montant accordé : '+ <?php echo ($devis['ht']-$devis['hta']) ?>)"><i class="fa fa-info"></i></span></td> 
                        </tr>
                     <?php } ?> 
                 </tbody>
