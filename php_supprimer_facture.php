@@ -6,12 +6,12 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-if ( !empty($_GET['num_fact']) ) {
+if ( !empty($_GET['id']) ) {
 
-    $num_fact=$_GET['num_fact'];
+    $id=$_GET['id'];
     
      // mysql inserting a new row
-    $result = mysql_query("DELETE FROM `factures` WHERE `num_fact` = '$num_fact'");
+    $result = mysql_query("DELETE FROM `factures` WHERE `id` = '$id'");
 
     if ($result>0) { 
         $_SESSION["success"] = 1;

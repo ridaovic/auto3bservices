@@ -96,7 +96,7 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Confirmer">
+                        <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Enregestrer">
                     </div><!-- panel-footer -->
                     </form>
                 </div><!-- panel -->

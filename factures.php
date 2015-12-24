@@ -47,12 +47,13 @@ require_once __DIR__ . '/header.php'; ?>
                     <tr>
                         <th>Numero de facture</th>
                         <th>date de la facture</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
+                        <th>Nom et Prenom</th>
                         <th>Immatriculation</th>
                         <th>Marque de voiture</th>
                         <th>Total</th>
                         <th>Impression</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,12 +63,13 @@ require_once __DIR__ . '/header.php'; ?>
                             <tr>
                               <td># <?php echo $facture['id']; ?> </td>
                               <td><?php echo $facture['created']; ?> </td>
-                              <td><?php echo $facture['nom']; ?> </td>
-                              <td><?php echo $facture['prenom']; ?> </td>
+                              <td><?php echo $facture['nom'].' '.$facture['prenom']; ?> </td>
                               <td><?php echo $facture['immatriculation']; ?> </td>
                               <td><?php echo $facture['marque']; ?> </td>
                               <td><?php echo $facture['total']; ?> DH </td>
                               <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
+                              <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
                           </tr>
                         <?php } ?> 
                 </tbody>

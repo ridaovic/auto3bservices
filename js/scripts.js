@@ -221,7 +221,8 @@ $('#edit_facture').on('click', function(e) {
 
 
 $('#add_col').on('click', function(e) {
-    $('.col').last().after('<div class="row col">'+$('.col').last().html()+'</div>');
+    var col='<div class="row col"><div class="col-sm-8"><div class="form-group"><label class="control-label">Designation</label><input type="text" name="designation[]" class="form-control" /></div><!-- form-group --></div><!-- col-sm-3 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Quantité</label><input type="number" name="qte[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Prix  U.T HT</label><input type="number" name="prix[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --></div><!-- row -->';
+    $('.col').last().after(col);
 });   
 
 });

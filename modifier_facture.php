@@ -6,135 +6,102 @@ require_once __DIR__ . '/header.php'; ?>
     <div class="pageheader">
         <div class="media">
             <div class="pageicon pull-left">
-                <i class="fa fa-pencil"></i>
+                <i class="fa fa-plus"></i>
             </div>
             <div class="media-body">
                 <ul class="breadcrumb">
                     <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="factures.php">Factures</a></li>
+                    <li><a href="produits.php">Factures</a></li>
                     <li>Modifier facture</li>
                 </ul>
                 <h4>Modifier facture</h4>
             </div>
         </div><!-- media -->
     </div><!-- pageheader -->
-    <div class="contentpanel">
+<div class="contentpanel">
         <div class="row">
             <div class="col-md-12"> 
-                <form>
+                <form action="php_modifier_facture.php" method="POST">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="mb30"  id="erreur"></div>
                     </div>
                     <div class="panel-body">
                         <?php 
-                        if (isset($_GET['num_fact'])) {
-                            $facture= getFacture($_GET['num_fact']);
-                            if (!$facture) {
+                        if (isset($_GET['id'])) {
+                            $facture=getFacture($_GET['id']);
+                            $vehicule= getVehiculeByID($facture['id_vehicule']);
+                            $designations = getDesignationByIdFacture($_GET['id']);
+
+                            
+                            if (!$vehicule) {
                                 echo("<script>location.href = 'factures.php';</script>");
                             }
                         }
                         ?>
                         <div class="row">
-                            <div class="col-sm-4">
+                            <input type="hidden" name="facture" value="<?php echo $_GET['id'] ?>">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">Numéro de facture</label>
-                                    <input type="text" name="num_fact" id="num_fact" class="form-control" value="<?php echo $facture['num_fact']; ?>" disabled/>
+                                    <label class="control-label">Nom et Prenom</label>
+                                    <input type="text" name="nom"  readonly="readonly" class="form-control" value="<?php echo ($vehicule['nom'].' '.$vehicule['prenom']); ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
+                            </div><!-- col-sm-2 -->
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="control-label">Nom</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" value="<?php echo $facture['nom']; ?>"/>
+                                    <label class="control-label">Marque</label>
+                                    <input type="text" name="marque" class="form-control" readonly="readonly" style="height: 41px;" value="<?php echo $vehicule['marque']; ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                             <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">Prénom</label>
-                                    <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $facture['prenom']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                        </div><!-- row -->
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">Date</label>
-                                    <input type="date" name="date_fact" id="date_fact" class="form-control" value="<?php echo $facture['date_fact']; ?>" style="height: 41px;"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
+                            </div><!-- col-sm-2 -->
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Immatriculation</label>
-                                    <input type="text" name="immatriculation" id="immatriculation" class="form-control" value="<?php echo $facture['immatriculation']; ?>"/>
+                                    <input type="text" name="immatriculation" readonly="readonly" class="form-control" value="<?php echo $vehicule['immatriculation']; ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">Marque de la voiture</label>
-                                    <input type="text" name="marque_voiture" id="marque_voiture" class="form-control" value="<?php echo $facture['marque_voiture']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
+                            </div><!-- col-sm-2 -->
+
+                            <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label class="control-label">Assurance</label>
+                                        <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
+                                    </div><!-- form-group -->
+                                </div><!-- col-sm-2 -->
                         </div><!-- row -->
 
-                        <div class="row">
-                            <div class="col-sm-4">
+                        <?php foreach ($designations as $designation): ?>
+                           <div class="row col">
+                            <div class="col-sm-8">
+                                <input type="hidden" name="id[]" class="form-control" value="<?php echo $designation['id'] ?>"/>
                                 <div class="form-group">
-                                    <label class="control-label">Désignation</label>
-                                    <input type="text" name="designation" id="designation" class="form-control" value="<?php echo $facture['designation']; ?>" style="height: 41px;"/>
+                                    <label class="control-label">Designation</label>
+                                    <input type="text" name="designation[]" class="form-control" value="<?php echo $designation['designation'] ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                             <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">État</label>
-                                    <select type="text" name="etat_facture" id="etat_facture" class="form-control" style="height: 41px;">
-                                    <?php if($facture['etat_facture'] == "Payé") { ?>
-                                        <option selected>Payé</option>
-                                        <option>Non payé</option>
-                                    <?php } elseif($facture['etat_facture'] == "Non payé") { ?>
-                                        <option selected>Non payé</option>
-                                        <option>Payé</option>
-                                    <?php } else {?>
-                                        <option></option>
-                                        <option>Payé</option>
-                                        <option>Non payé</option>
-                                    <?php } ?>
-                                    </select>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
+                            </div><!-- col-sm-3 -->
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Quantité</label>
-                                    <input type="number" name="qte" id="qte" class="form-control" value="<?php echo $facture['qte']; ?>"/>
+                                    <input type="number" name="qte[]" class="form-control" value="<?php echo $designation['qte'] ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                        </div><!-- row -->
-
-                           <div class="row">
-                            <div class="col-sm-4">
+                            </div><!-- col-sm-2 -->
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Prix  U.T HT</label>
-                                    <input type="number" name="prix" id="prix" class="form-control" value="<?php echo $facture['prix']; ?>" style="height: 41px;"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">Montant HT</label>
-                                    <input type="number" name="montant" id="montant" class="form-control" value="<?php echo $facture['montant']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">Total</label>
-                                    <input type="number" name="total" id="total" class="form-control" value="<?php echo $facture['total']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                        </div><!-- row -->
+                                    <input type="number" name="prix[]" class="form-control" value="<?php echo $designation['prix'] ?>"/>
+                                 </div><!-- form-group -->
+                            </div><!-- col-sm-2 -->
 
+                        </div><!-- row --> 
+                        <?php endforeach ?>
+                        <div class="row">
+                            <div class="col-sm-4 pull-right">
+                               <button type="button" class="btn btn-primary btn-block" id="add_col">Ajouter</button>
+                            </div></div>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="edit_facture">Modifier</button>
+                        <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Modifier">
                     </div><!-- panel-footer -->
                     </form>
                 </div><!-- panel -->
