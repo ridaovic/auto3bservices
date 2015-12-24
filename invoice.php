@@ -15,6 +15,7 @@ define('EURO_VAL', 6.55957 );
 //  function addDevis( $numdev )
 //  function addFacture( $numfact )
 //  function addDate( $date )
+//  function addTotal( $total )
 //  function addClient( $ref )
 //  function addPageNumber( $page )
 //  function addClientAdresse( $adresse )
@@ -204,7 +205,7 @@ function addDate( $date )
 	$y1  = 17;
 	$y2  = $y1 ;
 	$mid = $y1 + ($y2 / 2);
-	$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 3.5, 'D');
+	//$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 1, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1+3 );
 	$this->SetFont( "Arial", "B", 10);
@@ -212,6 +213,13 @@ function addDate( $date )
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1+9 );
 	$this->SetFont( "Arial", "", 10);
 	$this->Cell(10,5,$date, 0,0, "C");
+}
+
+function addTotal( $total )
+{
+	$this->SetXY( 180, 250 );
+	$this->SetFont( "Arial", "B", 15);
+	$this->Cell(10,5,'Total : '.$total.' DH' , 0,0, "C");
 }
 
 function addClient( $ref )

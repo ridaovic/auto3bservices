@@ -6,8 +6,12 @@ require('invoice.php');
 require('functions.php');
 
 $facture="";
+$designation="";
+$total=0;
 if (isset($_GET['id'])) {
     $facture = getFacture($_GET['id']);
+    $designations = getDesignationByIdFacture($_GET['id']);
+    $total=getTotal($_GET['id']);
     if (!$facture) {
         echo("<script>location.href = 'factures.php';</script>");
     }
@@ -22,32 +26,40 @@ $pdf->addSociete( "Auto3bservices",
                   "R.C.S. PARIS B 000 000 007\n" .
                   "Capital : 18000 " . EURO );
 $pdf->temporaire( "Auto3bservices" );
-$pdf->addDate( $facture['date_fact']);
+$pdf->addDate( $facture['created']);
 $pdf->addFactureInfos("
 Nom et Prenom : ".$facture['nom']." ".$facture['prenom']."\n
 Assurance :  ".$facture['assurance']."\n
 Expere :  ".$facture['expere']);
 
-$cols=array( "REFERENCE"    => 23,
-             "DESIGNATION"  => 147,
-             "TOTAL"          => 20 );
-
+$cols=array("DESIGNATION"  => 100,
+             "QUANTITE"     => 30,
+             "P.U. HT"      => 30,
+             "MONTANT H.T." => 30
+             );
 $pdf->addCols( $cols);
-
-$cols=array( "REFERENCE"    => "L",
-             "DESIGNATION"  => "L",
-             "TOTAL"          => "C" );
-
+$cols=array( "DESIGNATION"  => "L",
+             "QUANTITE"     => "C",
+             "P.U. HT"      => "R",
+             "MONTANT H.T." => "R"
+             );
 $pdf->addLineFormat( $cols);
+$pdf->addLineFormat($cols);
 
 $y    = 90;
 
-$line = array( "REFERENCE"    => $facture['num_fact'],
-               "DESIGNATION"  => $facture['designation'],
-               "TOTAL"        => $facture['total'] );
+foreach ($designations as $designation) {
+  $line = array( "DESIGNATION"  => $designation['designation'],
+               "QUANTITE"     => $designation['qte'],
+               "P.U. HT"      => $designation['prix'],
+               "MONTANT H.T." => $designation['qte']*$designation['prix']
+                );
 $size = $pdf->addLine( $y, $line );
 $y   += $size + 2;
 
+}
+
+$pdf->addTotal($total);
 
 $pdf->Output();
 ?>

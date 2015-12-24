@@ -80,16 +80,19 @@ function getProduct($ref)
 
 function getAllFactures()
 {
-     $result = mysql_query("SELECT * FROM factures , `vehicules` WHERE factures.id_vehicule=vehicules.id") or die(mysql_error());
+     $result = mysql_query("SELECT   factures.id , created , etat , id_vehicule , nom , prenom , immatriculation , marque , expere , assurance , date_entree , date_sortie FROM factures , vehicules WHERE factures.id_vehicule=vehicules.id") or die(mysql_error());
      $factures = array();
-     while($row = mysql_fetch_array($result))
-        $factures[] = $row;   
+     while($row = mysql_fetch_array($result)){
+        $row['total']=getTotal($row['id']);
+        $factures[] = $row;
+     }
+           
     return $factures;
 }
 
 function getFacture($num_fact)
 {
-     $result = mysql_query("SELECT * FROM factures , vehicules where factures.num_fact = '$num_fact' and factures.id_vehicule = vehicules.id ") or die(mysql_error());
+     $result = mysql_query("SELECT * FROM factures , vehicules where factures.id = '$num_fact' and factures.id_vehicule = vehicules.id ") or die(mysql_error());
      $facture = mysql_fetch_array($result);
     return $facture;
 }
@@ -162,4 +165,25 @@ function getAllDevis()
         $vihecules[] = $row;   
     return $vihecules;
 }
+
+function getTotal($id)
+{
+     $result = mysql_query("SELECT * FROM designation WHERE id_facture=$id") or die(mysql_error());
+     $total=0;
+     while($row = mysql_fetch_array($result)){
+        $total+=($row['qte']*$row['prix']);
+     }
+    return $total;
+}
+
+
+function getDesignationByIdFacture($id)
+{
+     $result = mysql_query("SELECT * FROM designation WHERE id_facture=$id") or die(mysql_error());
+     $designations = array();
+     while($row = mysql_fetch_array($result))
+        $designations[] = $row;   
+    return $designations;
+}
+
 ?>

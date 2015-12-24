@@ -21,7 +21,7 @@ require_once __DIR__ . '/header.php'; ?>
 <div class="contentpanel">
         <div class="row">
             <div class="col-md-12"> 
-                <form>
+                <form action="php_ajouter_facture.php" method="POST">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="mb30"  id="erreur"></div>
@@ -37,92 +37,66 @@ require_once __DIR__ . '/header.php'; ?>
                         }
                         ?>
                         <div class="row">
-                            <div class="col-sm-3">
+                            <input type="hidden" name="vehicule" value="<?php echo $_GET['id'] ?>">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label">Numéro de facture</label>
-                                    <input type="text" name="num_fact" id="num_fact" class="form-control" value=""/>
+                                    <label class="control-label">Nom et Prenom</label>
+                                    <input type="text" name="nom"  readonly="readonly" class="form-control" value="<?php echo ($vehicule['nom'].' '.$vehicule['prenom']); ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Nom</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" value="<?php echo $vehicule['nom']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                             <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Prénom</label>
-                                    <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $vehicule['prenom']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Date de la facture</label>
-                                    <input type="date" name="date_fact" id="date_fact" class="form-control" 
-                                    value="<?php echo date('Y-m-d'); ?>" style="height: 39px;"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                        </div><!-- row -->
-
-                        <div class="row">
-                            <div class="col-sm-3">
+                            </div><!-- col-sm-2 -->
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Marque</label>
-                                    <input type="text" name="marque" id="marque" class="form-control" style="height: 41px;" value="<?php echo $vehicule['marque']; ?>"/>
+                                    <input type="text" name="marque" class="form-control" readonly="readonly" style="height: 41px;" value="<?php echo $vehicule['marque']; ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
+                            </div><!-- col-sm-2 -->
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Immatriculation</label>
-                                    <input type="text" name="immatriculation" id="immatriculation" class="form-control" value="<?php echo $vehicule['immatriculation']; ?>"/>
+                                    <input type="text" name="immatriculation" readonly="readonly" class="form-control" value="<?php echo $vehicule['immatriculation']; ?>"/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
+                            </div><!-- col-sm-2 -->
+
+                            <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label class="control-label">Assurance</label>
+                                        <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
+                                    </div><!-- form-group -->
+                                </div><!-- col-sm-2 -->
+                        </div><!-- row -->
+
+                        <div class="row col">
+                            <div class="col-sm-8">
                                 <div class="form-group">
                                     <label class="control-label">Designation</label>
-                                    <input type="text" name="designation" id="designation" class="form-control" />
+                                    <input type="text" name="designation[]" class="form-control" />
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Assurance</label>
-                                    <input type="text" name="assurance" id="assurance" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                        </div><!-- row -->
-
-
-                           <div class="row">
-                           <div class="col-sm-3">
+                            </div><!-- col-sm-3 -->
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Quantité</label>
-                                    <input type="number" name="qte" id="qte" class="form-control" value="" style="height: 41px;"/>
+                                    <input type="number" name="qte[]" class="form-control" value=""/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
+                            </div><!-- col-sm-2 -->
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Prix  U.T HT</label>
-                                    <input type="number" name="prix" id="prix" class="form-control" value="" style="height: 41px;"/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Montant HT</label>
-                                    <input type="number" name="montant" id="montant" class="form-control" value=""/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Total</label>
-                                    <input type="number" name="total" id="total" class="form-control" value=""/>
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-6 -->
+                                    <input type="number" name="prix[]" class="form-control" value=""/>
+                                 </div><!-- form-group -->
+                            </div><!-- col-sm-2 -->
                         </div><!-- row -->
 
+
+                        <div class="row">
+                            <div class="col-sm-4 pull-right">
+                               <button type="button" class="btn btn-primary btn-block" id="add_col">Ajouter</button>
+                            </div></div>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="confirm_facture">Confirmer</button>
+                        <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Confirmer">
                     </div><!-- panel-footer -->
                     </form>
                 </div><!-- panel -->

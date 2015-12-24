@@ -51,11 +51,6 @@ require_once __DIR__ . '/header.php'; ?>
                         <th>Prenom</th>
                         <th>Immatriculation</th>
                         <th>Marque de voiture</th>
-                        <th>Désignation</th>
-                        <th>Quantité</th>
-                        <th>État</th>
-                        <th>Prix U.T HT</th>
-                        <th>Montant HT</th>
                         <th>Total</th>
                         <th>Impression</th>
                     </tr>
@@ -65,19 +60,14 @@ require_once __DIR__ . '/header.php'; ?>
                       $factures= getAllFactures();
                       foreach($factures as $facture){ ?> 
                             <tr>
-                              <td><?php echo $facture['num_fact']; ?> </td>
-                              <td><?php echo $facture['date_fact']; ?> </td>
+                              <td># <?php echo $facture['id']; ?> </td>
+                              <td><?php echo $facture['created']; ?> </td>
                               <td><?php echo $facture['nom']; ?> </td>
                               <td><?php echo $facture['prenom']; ?> </td>
                               <td><?php echo $facture['immatriculation']; ?> </td>
                               <td><?php echo $facture['marque']; ?> </td>
-                              <td><?php echo $facture['designation']; ?> </td>
-                              <td><?php echo $facture['qte']; ?> </td>
-                              <td><?php echo $facture['etat_facture']; ?> </td>
-                              <td><?php echo $facture['prix']; ?> </td>
-                              <td><?php echo $facture['montant']; ?> </td>
-                              <td><?php echo $facture['total']; ?> </td>
-                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['num_fact']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                              <td><?php echo $facture['total']; ?> DH </td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                           </tr>
                         <?php } ?> 
                 </tbody>

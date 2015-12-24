@@ -217,6 +217,11 @@ $('#edit_facture').on('click', function(e) {
         }else{
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
         }
-    });    
+    }); 
+
+
+$('#add_col').on('click', function(e) {
+    $('.col').last().after('<div class="row col">'+$('.col').last().html()+'</div>');
+});   
 
 });
