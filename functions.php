@@ -78,9 +78,12 @@ function getProduct($ref)
     return $produit;
 }
 
-function getAllFactures()
+function getAllFactures($etat)
 {
-     $result = mysql_query("SELECT   factures.id , created , etat , id_vehicule , nom , prenom , immatriculation , marque , expere , assurance , date_entree , date_sortie FROM factures , vehicules WHERE factures.id_vehicule=vehicules.id") or die(mysql_error());
+    $char="";
+    if ($etat==0) { $char="and etat = 0"; }
+    elseif ($etat==1) { $char="and etat = 1"; }    
+     $result = mysql_query("SELECT   factures.id , created , etat , id_vehicule , nom , prenom , immatriculation , marque , expere , assurance , date_entree , date_sortie FROM factures , vehicules WHERE factures.id_vehicule=vehicules.id $char") or die(mysql_error());
      $factures = array();
      while($row = mysql_fetch_array($result)){
         $row['total']=getTotal($row['id']);

@@ -19,7 +19,7 @@
         <script>
             jQuery(document).ready(function(){
                 
-                jQuery('#basicTable').DataTable({
+                jQuery('#basicTable,#basicTable1,#basicTable2,#basicTable3').DataTable({
                     responsive: true
                 });
                 
