@@ -65,6 +65,16 @@ $y   += $size + 2;
 
 }
 
+$y   =  140;
+$line = array( "DESIGNATION"  => $designation['designation'],
+               "QUANTITE"     => $designation['qte'],
+               "P.U. HT"      => $designation['prix'],
+               "MONTANT H.T." => $designation['qte']*$designation['prix']
+                );
+$size = $pdf->addLine( $y, $line );
+
+
+
 $pdf->addTotal($total);
 
 //$lt=$lettre->Conversion(250); 

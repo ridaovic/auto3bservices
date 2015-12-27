@@ -93,7 +93,7 @@ require_once __DIR__ . '/header.php'; ?>
                                               <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
                                           </td> 
-                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
                                       </tr>
@@ -139,7 +139,7 @@ require_once __DIR__ . '/header.php'; ?>
                                               <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
                                           </td> 
-                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
                                       </tr>
@@ -185,7 +185,7 @@ require_once __DIR__ . '/header.php'; ?>
                                               <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
                                           </td> 
-                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
                                       </tr>
