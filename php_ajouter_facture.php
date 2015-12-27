@@ -9,8 +9,12 @@ $response = array();
 
 if (!empty($_POST['vehicule'])) {
     $vehicule=$_POST['vehicule'];
+    $etat=0;
+    if (isset($_POST['etat'])) {
+        $etat=1;
+    }
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO `factures` (`id`, `created`, `etat`, `id_vehicule`) VALUES ( NULL, CURRENT_TIMESTAMP, '0', $vehicule)");
+    $result = mysql_query("INSERT INTO `factures` (`id`, `created`, `etat`, `id_vehicule`) VALUES ( NULL, CURRENT_TIMESTAMP, '$etat', $vehicule)");
     $facture=mysql_insert_id();
     if ($result) {
         for ($i=0; $i < count($_POST['designation']); $i++) {

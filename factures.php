@@ -67,6 +67,7 @@ require_once __DIR__ . '/header.php'; ?>
                                     <th>Immatriculation</th>
                                     <th>Marque de voiture</th>
                                     <th>Total</th>
+                                    <th>Etat</th>
                                     <th>Impression</th>
                                     <th>Modifier</th>
                                     <th>Supprimer</th>
@@ -85,6 +86,13 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['immatriculation']; ?> </td>
                                           <td><?php echo $facture['marque']; ?> </td>
                                           <td><?php echo $facture['total']; ?> DH </td>
+                                          <td class="center">
+                                            <?php if ($facture['etat']==1): ?>
+                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                            <?php else: ?>
+                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                            <?php endif ?>
+                                          </td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
@@ -105,6 +113,7 @@ require_once __DIR__ . '/header.php'; ?>
                                     <th>Immatriculation</th>
                                     <th>Marque de voiture</th>
                                     <th>Total</th>
+                                    <th>Etat</th>
                                     <th>Impression</th>
                                     <th>Modifier</th>
                                     <th>Supprimer</th>
@@ -123,6 +132,13 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['immatriculation']; ?> </td>
                                           <td><?php echo $facture['marque']; ?> </td>
                                           <td><?php echo $facture['total']; ?> DH </td>
+                                          <td class="center">
+                                            <?php if ($facture['etat']==1): ?>
+                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                            <?php else: ?>
+                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                            <?php endif ?>
+                                          </td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
@@ -143,6 +159,7 @@ require_once __DIR__ . '/header.php'; ?>
                                     <th>Immatriculation</th>
                                     <th>Marque de voiture</th>
                                     <th>Total</th>
+                                    <th>Etat</th>
                                     <th>Impression</th>
                                     <th>Modifier</th>
                                     <th>Supprimer</th>
@@ -161,6 +178,13 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['immatriculation']; ?> </td>
                                           <td><?php echo $facture['marque']; ?> </td>
                                           <td><?php echo $facture['total']; ?> DH </td>
+                                          <td class="center">
+                                            <?php if ($facture['etat']==1): ?>
+                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                            <?php else: ?>
+                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                            <?php endif ?>
+                                          </td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="pdf.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
                                           <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 

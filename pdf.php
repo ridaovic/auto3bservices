@@ -2,6 +2,9 @@
 // (c) Xavier Nicolay
 // Exemple de génération de devis/facture PDF
 
+include('ChiffresEnLettres.php'); 
+
+
 require('invoice.php');
 require('functions.php');
 
@@ -16,6 +19,9 @@ if (isset($_GET['id'])) {
         echo("<script>location.href = 'factures.php';</script>");
     }
 }
+
+$lettre=new ChiffreEnLettre(); 
+
 
 
 $pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
@@ -60,6 +66,8 @@ $y   += $size + 2;
 }
 
 $pdf->addTotal($total);
+
+//$lt=$lettre->Conversion(250); 
 
 $pdf->Output();
 ?>

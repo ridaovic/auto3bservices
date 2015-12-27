@@ -38,7 +38,7 @@ require_once __DIR__ . '/header.php'; ?>
                         ?>
                         <div class="row">
                             <input type="hidden" name="vehicule" value="<?php echo $_GET['id'] ?>">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Nom et Prenom</label>
                                     <input type="text" name="nom"  readonly="readonly" class="form-control" value="<?php echo ($vehicule['nom'].' '.$vehicule['prenom']); ?>"/>
@@ -58,11 +58,22 @@ require_once __DIR__ . '/header.php'; ?>
                             </div><!-- col-sm-2 -->
 
                             <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label class="control-label">Assurance</label>
-                                        <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
-                                    </div><!-- form-group -->
-                                </div><!-- col-sm-2 -->
+                                <div class="form-group">
+                                    <label class="control-label">Assurance</label>
+                                    <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-2 -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <br>
+                                    <br>
+                                    <div class="ckbox ckbox-success">
+                                        <input type="checkbox" id="checkboxSuccess" name="etat" checked="checked">
+                                        <label for="checkboxSuccess">Etat facture</label>
+                                    </div>
+                                </div>
+                            </div><!-- col-sm-2 -->
                         </div><!-- row -->
 
                         <div class="row col">
