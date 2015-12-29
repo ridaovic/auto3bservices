@@ -49,7 +49,7 @@ padding:10px 5px;
 }
 -->
 </style>
-<page style="font-size: 12pt" backimgy="bottom">
+<page style="font-size: 12pt;" backimg="images/bg.jpg" backimgy="bottom">
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
         <tr>
             <td style="width: 25%; color: #444444;">
@@ -67,9 +67,9 @@ padding:10px 5px;
     <br>
     <br>
 
-    Nom et Prenom : <?php echo ($facture['nom']." ".$facture['prenom']); ?><br><br>
-    Assurance :  <?php echo $facture['assurance']; ?><br><br>
-    Expere :  <?php echo $facture['expere']; ?>
+    Client : <?php echo ($facture['nom']." ".$facture['prenom']); ?><br><br>
+    Véhicule :  <?php echo $facture['marque']; ?><br><br>
+    Immatriculation :  <?php echo $facture['immatriculation']; ?>
     <br>
     <br>
     <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
@@ -83,7 +83,7 @@ padding:10px 5px;
     <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
         <?php foreach ($designations as $designation): ?>
           <tr>
-            <td style="width: 40%"><?php echo $designation['designation']; ?></td>
+            <td style="width: 40%"><?php echo $designation['designation']; ?> <?php if ($designation['occasion']==1) echo " (occ)"; ?></td>
             <td style="width: 20%; text-align:right;"><?php echo $designation['prix']; ?> DH</td>
             <td style="width: 20%; text-align:right;"><?php echo $designation['qte']; ?>x</td>
             <td style="width: 20%; text-align:right;"><?php echo $designation['qte']*$designation['prix']; ?> DH</td>
@@ -120,12 +120,14 @@ padding:10px 5px;
    ?>
   <span style="text-transform: uppercase;"><?php echo $totallettre; ?> DHS  TTC</span>  </div>
 <br /><br /><br /><br />
-<div style="position: absolute;bottom: 50px;text-align: center;left: 150px;">
+<div style="position: absolute;bottom: 50px;text-align: left;line-height: 22px;">
   358. Lot Sidi Ghanem Industriel -MARRAKECH-mail:autotroisbservices@gmail.com<br>
   GSM :06 61 23 38 27 /Tel/Fax: 05 24 33  54 54/ site web : www.auto3bservices.com<br>
   RC N° 68863-PATENTE N° 46296302- I.F N° 15258590- C.N.S.S N° 4463684
 </div>
-
+<div style="position: absolute;bottom: 30px;right:0;">
+<img src="images/qrcode.jpg" width="100">
+</div>
 
 <?php 
     $content = ob_get_clean();

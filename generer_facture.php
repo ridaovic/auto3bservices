@@ -77,7 +77,7 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
 
                         <div class="row col">
-                            <div class="col-sm-8">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="control-label">Designation</label>
                                     <input type="text" name="designation[]" class="form-control" />
@@ -97,6 +97,16 @@ require_once __DIR__ . '/header.php'; ?>
                                     <input type="number" name="prix[]" class="form-control" value=""/>
                                  </div><!-- form-group -->
                             </div><!-- col-sm-2 -->
+
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <br>
+                                    <br>
+                                    <div class="checkbox block"><label><input name="occ[]" value="0" type="checkbox"> Occasion</label></div>
+                                </div>
+                            </div><!-- col-sm-2 -->
+
                         </div><!-- row -->
 
 
