@@ -31,18 +31,17 @@ table
 th
 {
     text-align: center;
-    border: solid 1px #eee;
-    background: #f8f8f8;
+    border: solid 1px #000;
+   
 }
 td
 {
     text-align: center;
-     
-    
+ border: solid 1px #000;   s
 }
 .dataTable td{
 padding:10px 5px;
-background-color:#efefef;
+
 }
 .dataTable th{
 padding:10px 5px;
@@ -52,13 +51,13 @@ padding:10px 5px;
 <page style="font-size: 12pt;" backimg="images/bg.jpg" backimgy="bottom">
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
         <tr>
-            <td style="width: 25%; color: #444444;">
+            <td style="width: 25%; color: #444444;border: none;">
               <img style="width: 100%;" src="./images/logo.gif" alt="Logo"><br><br>
                 Auto3bservices
             </td>
-            <td style="width: 25%;">
+            <td style="width: 25%;border: none;">
              </td>
-            <td style="width: 50%;">
+            <td style="width: 50%;border: none;">
              Marrakech , le <?php echo $facture['created']; ?>
             </td>
             </tr>
@@ -72,7 +71,7 @@ padding:10px 5px;
     Immatriculation :  <?php echo $facture['immatriculation']; ?>
     <br>
     <br>
-    <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
+    <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black; text-align: center; font-size: 10pt;">
         <tr>
             <th style="width: 40%">Désignation</th>
             <th style="width: 20%">Prix Unitaire</th>
@@ -80,7 +79,7 @@ padding:10px 5px;
             <th style="width: 20%">Prix Net</th>
         </tr>
     </table>
-    <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
+    <table class="dataTable" cellspacing="0" style="width: 100%; border: solid 1px black;  text-align: center; font-size: 10pt;">
         <?php foreach ($designations as $designation): ?>
           <tr>
             <td style="width: 40%"><?php echo $designation['designation']; ?> <?php if ($designation['occasion']==1) echo " (occ)"; ?></td>
