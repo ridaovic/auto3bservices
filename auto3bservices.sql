@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 24 Décembre 2015 à 18:31
+-- Généré le :  Mar 29 Décembre 2015 à 19:31
 -- Version du serveur :  5.6.26
 -- Version de PHP :  5.6.12
 
@@ -28,22 +28,33 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `designation` (
   `id` int(11) NOT NULL,
+  `occasion` tinyint(1) NOT NULL DEFAULT '0',
   `designation` text NOT NULL,
   `qte` int(11) NOT NULL,
   `prix` int(11) NOT NULL,
   `id_facture` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `designation`
 --
 
-INSERT INTO `designation` (`id`, `designation`, `qte`, `prix`, `id_facture`) VALUES
-(1, 'test', 3, 4, 1),
-(2, 'test2', 4, 10, 1),
-(3, 'aaaa', 3, 10, 2),
-(4, 'bbbb', 2, 20, 2),
-(5, 'cccc', 5, 100, 2);
+INSERT INTO `designation` (`id`, `occasion`, `designation`, `qte`, `prix`, `id_facture`) VALUES
+(36, 0, 'ConsidÃ©rez, seigneur, interrompit mon compagnon.', 5, 10, 6),
+(37, 0, 'IndÃ©pendamment des Ã©lecteurs appelÃ©s', 3, 200, 6),
+(38, 0, 'Conformant sa conduite Ã  mon Ã©gard.', 2, 500, 6),
+(39, 0, 'test1', 3, 10, 7),
+(40, 0, 'test2', 3, 30, 7),
+(41, 0, 'wwww', 2, 20, 8),
+(42, 0, 'qqqqqqq', 5, 10, 8),
+(43, 0, 'xxxx', 6, 60, 9),
+(44, 1, 'test1', 1, 1, 10),
+(45, 0, 'test2', 2, 2, 10),
+(46, 1, 'test3', 3, 3, 10),
+(47, 0, 'test4', 4, 4, 10),
+(48, 0, 'test1', 2, 10, 11),
+(49, 1, 'test2', 3, 30, 11),
+(50, 1, 'test3', 3, 40, 11);
 
 -- --------------------------------------------------------
 
@@ -58,14 +69,15 @@ CREATE TABLE IF NOT EXISTS `devis` (
   `ht` double NOT NULL,
   `hta` double NOT NULL,
   `id_vehicule` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `devis`
 --
 
 INSERT INTO `devis` (`id`, `date_devis`, `date_accord`, `ht`, `hta`, `id_vehicule`) VALUES
-(8, '2015-12-23', '2015-12-31', 20, 30, 7);
+(8, '2015-12-23', '2015-12-31', 20, 30, 1),
+(9, '2015-12-24', '2015-12-31', 120, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -78,15 +90,19 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `etat` tinyint(1) DEFAULT '0',
   `id_vehicule` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `factures`
 --
 
 INSERT INTO `factures` (`id`, `created`, `etat`, `id_vehicule`) VALUES
-(1, '2015-12-24 16:13:14', 0, 2),
-(2, '2015-12-24 16:22:36', 0, 1);
+(6, '2015-12-24 19:28:45', 1, 2),
+(7, '2015-12-26 17:37:56', 0, 1),
+(8, '2015-12-27 14:33:03', 1, 2),
+(9, '2015-12-27 14:33:31', 0, 1),
+(10, '2015-12-29 17:10:27', 1, 2),
+(11, '2015-12-29 17:16:14', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -206,17 +222,17 @@ ALTER TABLE `vehicules`
 -- AUTO_INCREMENT pour la table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT pour la table `devis`
 --
 ALTER TABLE `devis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `factures`
 --
 ALTER TABLE `factures`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
