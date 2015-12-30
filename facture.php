@@ -37,7 +37,7 @@ th
 td
 {
     text-align: center;
- border: solid 1px #000;   s
+ border: solid 1px #000; 
 }
 .dataTable td{
 padding:10px 5px;
@@ -83,9 +83,9 @@ padding:10px 5px;
         <?php foreach ($designations as $designation): ?>
           <tr>
             <td style="width: 40%"><?php echo $designation['designation']; ?> <?php if ($designation['occasion']==1) echo " (occ)"; ?></td>
-            <td style="width: 20%; text-align:right;"><?php echo $designation['prix']; ?> DH</td>
+            <td style="width: 20%; text-align:right;"><?php echo number_format($designation['prix'], 2, ',', ' '); ?> </td>
             <td style="width: 20%; text-align:right;"><?php echo $designation['qte']; ?>x</td>
-            <td style="width: 20%; text-align:right;"><?php echo $designation['qte']*$designation['prix']; ?> DH</td>
+            <td style="width: 20%; text-align:right;"><?php echo number_format( $designation['qte']*$designation['prix'], 2, ',', ' '); ?> </td>
         </tr>
         <?php endforeach ?>
 
@@ -95,19 +95,19 @@ padding:10px 5px;
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
               <th style="width: 20%; text-align:right;">Total H.T</th>
-              <th style="width: 20%; text-align:right;"><?php echo $total ?> DH</th>
+              <th style="width: 20%; text-align:right;"><?php echo number_format( $total, 2, ',', ' '); ?> </th>
         </tr>
         <tr>
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
               <th style="width: 20%; text-align:right;">TVA 20%</th>
-              <th style="width: 20%; text-align:right;"><?php echo $total*0.2 ?> DH</th>
+              <th style="width: 20%; text-align:right;"><?php echo number_format( $total*0.2, 2, ',', ' '); ?> </th>
         </tr>
         <tr>
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
               <th style="width: 20%; text-align:right;">Total TTC</th>
-              <th style="width: 20%; text-align:right;"><?php echo $total*1.2 ?> DH</th>
+              <th style="width: 20%; text-align:right;"><?php echo number_format( $total*1.2, 2, ',', ' '); ?> </th>
         </tr>
     </table> 
 </page>
@@ -117,7 +117,7 @@ padding:10px 5px;
   <?php 
   $totallettre=$lettre->Conversion($total*1.2); 
    ?>
-  <span style="text-transform: uppercase;"><?php echo $totallettre; ?> DHS  TTC</span>  </div>
+  <span style="text-transform: uppercase;"><?php echo $totallettre; ?>  TTC</span>  </div>
 <br /><br /><br /><br />
 <div style="position: absolute;bottom: 50px;text-align: left;line-height: 22px;">
   358. Lot Sidi Ghanem Industriel -MARRAKECH-mail:autotroisbservices@gmail.com<br>
