@@ -32,12 +32,12 @@ th
 {
     text-align: center;
     border: solid 1px #000;
-   
 }
 td
 {
-    text-align: center;
- border: solid 1px #000; 
+ text-align: center;
+ border-left: solid 1px #000; 
+ border-right: solid 1px #000; 
 }
 .dataTable td{
 padding:10px 5px;
@@ -94,20 +94,26 @@ padding:10px 5px;
         <tr>
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
-              <th style="width: 20%; text-align:right;">Total H.T</th>
-              <th style="width: 20%; text-align:right;"><?php echo number_format( $total, 2, ',', ' '); ?> </th>
+         <th style="width: 20%;"></th>
+         <th style="width: 20%;"></th>
         </tr>
         <tr>
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
-              <th style="width: 20%; text-align:right;">TVA 20%</th>
-              <th style="width: 20%; text-align:right;"><?php echo number_format( $total*0.2, 2, ',', ' '); ?> </th>
+         <th style="width: 20%; text-align:right;">Total H.T</th>
+         <th style="width: 20%; text-align:right;"><?php echo number_format( $total, 2, ',', ' '); ?> </th>
         </tr>
         <tr>
          <th style="width: 20%;"></th>
          <th style="width: 20%;"></th>
-              <th style="width: 20%; text-align:right;">Total TTC</th>
-              <th style="width: 20%; text-align:right;"><?php echo number_format( $total*1.2, 2, ',', ' '); ?> </th>
+         <th style="width: 20%; text-align:right;">TVA 20%</th>
+         <th style="width: 20%; text-align:right;"><?php echo number_format( $total*0.2, 2, ',', ' '); ?> </th>
+        </tr>
+        <tr>
+         <th style="width: 20%;"></th>
+         <th style="width: 20%;"></th>
+         <th style="width: 20%; text-align:right;">Total TTC</th>
+         <th style="width: 20%; text-align:right;"><?php echo number_format( $total*1.2, 2, ',', ' '); ?> </th>
         </tr>
     </table> 
 </page>

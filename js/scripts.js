@@ -10,7 +10,7 @@ $(document).ready(function() {
             $.post( "php_signin.php", { username: username, password: password }, function( data ) {
 
             if (data.success==1) {
-                window.location.href = "produits.php";
+                window.location.href = "recherche.php";
             } else{
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
             };
@@ -122,12 +122,14 @@ $(document).ready(function() {
         var marque = $('#marque').val();
         var ass = $('#ass').val();
         var exp = $('#exp').val();
+        var chassis = $('#chassis').val();
+        var grise = $('#grise').val();
         var de = $('#de').val();
         var ds = $('#ds').val();
        
         if (nom!="" && prenom!="" && mat!="" && marque!="" && ass!="" && exp!="") {
 
-            $.post( "php_ajouter_vehicule.php", { nom : nom, prenom : prenom , mat : mat , marque : marque , ass : ass, exp : exp, de : de, ds : ds}, function( data ) {
+            $.post( "php_ajouter_vehicule.php", { nom : nom, prenom : prenom , mat : mat , marque : marque , chassis : chassis , grise : grise , ass : ass, exp : exp, de : de, ds : ds}, function( data ) {
 
             if (data.success==1) {
                 
@@ -135,6 +137,8 @@ $(document).ready(function() {
                 $('#prenom').val("");
                 $('#mat').val("");
                 $('#marque').val("");
+                $('#chassis').val("");
+                $('#grise').val("");
                 $('#ass').val("");
                 $('#exp').val("");
                 $('#de').val("");
@@ -222,9 +226,65 @@ $('#edit_facture').on('click', function(e) {
 
 $('#add_col').on('click', function(e) {
     var val=$(".col").length;
-    var col='<div class="row col"><div class="col-sm-6"><div class="form-group"><label class="control-label">Designation</label><input type="text" name="designation[]" class="form-control" /></div><!-- form-group --></div><!-- col-sm-3 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Quantité</label><input type="number" name="qte[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Prix  U.T HT</label><input type="number" name="prix[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><br><br><div class="checkbox block"><label><input name="occ[]" value="'+val+'" type="checkbox"> Occasion</label></div></div></div><!-- row -->';
+    var col='<div class="row col"><div class="col-sm-6"><div class="form-group"><label class="control-label">Designation</label><input type="text" name="designation[]" class="form-control" /></div><!-- form-group --></div><!-- col-sm-3 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Quantité</label><input type="number" name="qte[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Prix  U.T HT</label><input type="number" name="prix[]" class="prix form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><br><br><div class="checkbox block"><label><input name="occ[]" value="'+val+'" type="checkbox"> Occasion</label></div></div></div><!-- row -->';
     $('.col').last().after(col);
 
-});   
+}); 
+
+function displayResult(item, val, text) {
+    console.log(item);
+    console.log(val);
+    console.log(item);
+    //$('.alert').show().html('You selected <strong>' + val + '</strong>: <strong>' + text + '</strong>');
+}
+
+
+$('#demo1').typeahead({
+    source: function (query, process) {
+            $.ajax({
+              url: 'facture_devis.php',
+              type: 'POST',
+              dataType: 'JSON',
+              data: 'query=' + query,
+              success: function(data) {
+                //console.log(data);
+                process(data);
+              }
+            });
+          },
+    updater: function(selection){
+        
+        $.post( "tab_factures.php", { id : selection['id'] }, function( data ) {
+            $('#facture').html(data);
+        },"html");
+
+        $.post( "tab_devis.php", { id : selection['id'] }, function( data ) {
+            $('#devis').html(data);
+        },"html");
+    }
+});
+
+
+// $( "input[name='prix[]']" ).change(function() {
+// alert('teeed');
+// });
+
+$('.prix').on('keyup', function(e) {
+
+alert('tttt');
+
+// if ( event.which == 13 ) {
+//      event.preventDefault();
+//   }
+  
+//   console.log($( ".prix" ).val());
+// });
+// $( ".prix" ).keyup(function( event ) {
+//   if ( event.which == 13 ) {
+//      event.preventDefault();
+//   }
+  
+//   console.log($( ".prix" ).val());
+ });
 
 });

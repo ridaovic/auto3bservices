@@ -15,6 +15,7 @@
         <script src="js/select2.min.js"></script>
 
         <script src="js/custom.js"></script>
+        <script src="js/bootstrap-typeahead.js"></script>
         <script src="js/scripts.js"></script>
         <script>
             jQuery(document).ready(function(){
