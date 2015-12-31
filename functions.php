@@ -100,6 +100,13 @@ function getFacture($num_fact)
     return $facture;
 }
 
+function getDevis($num_devis)
+{
+     $result = mysql_query("SELECT * FROM devis , vehicules where devis.id = '$num_devis' and devis.id_vehicule = vehicules.id ") or die(mysql_error());
+     $devis = mysql_fetch_array($result);
+    return $devis;
+}
+
 function isMinqteSupQte($ref)
 {
      $produit = getProduct($ref);
@@ -160,14 +167,29 @@ function getFactureByVehiculeID($id)
 }
 //  les fonctions pour table devis
 
+// function getAllDevis()
+// {
+//      $result = mysql_query("SELECT devis.id , created  , id_vehicule , nom , prenom , immatriculation , marque , expere , assurance FROM `devis` , `vehicules` WHERE devis.id_vehicule=vehicules.id") or die(mysql_error());
+//      $vihecules = array();
+//      while($row = mysql_fetch_array($result))
+//         $vihecules[] = $row;   
+//     return $vihecules;
+// }
+
+
 function getAllDevis()
 {
-     $result = mysql_query("SELECT * FROM `devis` , `vehicules` WHERE devis.id_vehicule=vehicules.id") or die(mysql_error());
-     $vihecules = array();
-     while($row = mysql_fetch_array($result))
-        $vihecules[] = $row;   
-    return $vihecules;
+       
+    $result = mysql_query("SELECT   devis.id , created  , id_vehicule , nom , prenom , immatriculation , marque , expere , assurance  FROM devis , vehicules WHERE devis.id_vehicule=vehicules.id") or die(mysql_error());
+    $devis = array();
+    while($row = mysql_fetch_array($result)){
+         $devis[] = $row;
+    }
+    
+    return $devis;
 }
+
+
 
 function getTotal($id)
 {
@@ -180,6 +202,8 @@ function getTotal($id)
 }
 
 
+
+
 function getDesignationByIdFacture($id)
 {
      $result = mysql_query("SELECT * FROM designation WHERE id_facture=$id") or die(mysql_error());
@@ -187,6 +211,15 @@ function getDesignationByIdFacture($id)
      while($row = mysql_fetch_array($result))
         $designations[] = $row;   
     return $designations;
+}
+
+function getDetailsByIdDevis($id)
+{
+     $result = mysql_query("SELECT * FROM details WHERE id_facture=$id") or die(mysql_error());
+     $details = array();
+     while($row = mysql_fetch_array($result))
+        $details[] = $row;   
+    return $details;
 }
 
 ?>

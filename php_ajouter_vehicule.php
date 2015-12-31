@@ -15,12 +15,14 @@ if ( !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mat']) 
         $marque=$_POST['marque'];
         $ass=$_POST['ass'];
         $exp=$_POST['exp'];
+        $chassis=$_POST['chassis'];
+        $grise=$_POST['grise'];
         $de=$_POST['de'];
         $ds=$_POST['ds'];
 
         // mysql inserting a new row
-        $result = mysql_query("INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `expere`, `assurance`, `date_entree`, `date_sortie`) 
-            VALUES (NULL, '$nom', '$prenom', '$mat', '$marque', '$exp', '$ass', '$de', '$ds')");
+        $result = mysql_query("INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`,`chassis`,`carte_grise`, `expere`, `assurance`, `date_entree`, `date_sortie`) 
+            VALUES (NULL, '$nom', '$prenom', '$mat', '$marque','$chassis','$grise', '$exp', '$ass', '$de', '$ds')");
 
 
         if ($result) {    

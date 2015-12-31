@@ -11,9 +11,9 @@ require_once __DIR__ . '/header.php'; ?>
             <div class="media-body">
                 <ul class="breadcrumb">
                     <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="#">Devises</a></li>
+                    <li><a href="#">Devis</a></li>
                 </ul>
-                <h4>Devises</h4>
+                <h4>Devis</h4>
             </div>
         </div><!-- media -->
     </div><!-- pageheader -->
@@ -42,36 +42,47 @@ require_once __DIR__ . '/header.php'; ?>
                 
             </div>
 
-            <table id="basicTable" class="table table-striped table-bordered responsive">
-                <thead class="">
-                    <tr>
-                        <th>Nom et prenom</th>
-                        <th>Immatriculation</th>
-                        <th>Marque</th>
-                        <th>Expére</th>
-                        <th>Assurance</th>
-                        <th>Date entrée</th>
-                        <th>Date sortie</th>                       
-                        <th>Calculer</th>                       
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                      $devises= getAllDevis();
-                      foreach($devises as $devis){ ?> 
-                        <tr>
-                          <td><?php echo ($devis['nom']." ".$devis['prenom']); ?> </td>
-                          <td><?php echo $devis['immatriculation']; ?> </td>
-                          <td><?php echo $devis['marque']; ?> </td>
-                          <td><?php echo $devis['expere']; ?> </td>
-                          <td><?php echo $devis['assurance']; ?> </td>
-                          <td><?php echo $devis['date_entree']; ?> </td>
-                          <td><?php echo $devis['date_sortie']; ?> </td>
-                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" onclick="alert('la différence entre le montant de devis et le montant accordé : '+ <?php echo ($devis['ht']-$devis['hta']) ?>)"><i class="fa fa-info"></i></span></td> 
-                       </tr>
-                    <?php } ?> 
-                </tbody>
-            </table>
+            <?php 
+            $t=0;
+            $p=0;
+            $n=0;
+             ?>
+            <div class="col-md-6">
+                
+                <table id="basicTable1" class="table table-striped table-bordered responsive">
+                            <thead class="">
+                                <tr>
+                                    <th>Numero de facture</th>
+                                    <th>date de la facture</th>
+                                    <th>Nom et Prenom</th>
+                                    <th>Immatriculation</th>
+                                    <th>Marque de voiture</th>
+                                    <th>Impression</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                  $devises= getAllDevis();
+                                  foreach($devises as $devis){ 
+                                    ?> 
+                                        <tr>
+                                          <td># <?php echo $devis['id']; ?> </td>
+                                          <td><?php echo $devis['created']; ?> </td>
+                                          <td><?php echo $devis['nom'].' '.$devis['prenom']; ?> </td>
+                                          <td><?php echo $devis['immatriculation']; ?> </td>
+                                          <td><?php echo $devis['marque']; ?> </td>
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="devis2pdf.php?id=<?php echo $devis['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                        </tr>
+                                    <?php } ?> 
+                            </tbody>
+                        </table>
+               
+                
+            </div>
+
+
+            
+            
         </div><!-- panel -->
         <br />
     </div><!-- contentpanel -->

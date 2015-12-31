@@ -56,6 +56,20 @@ require_once __DIR__ . '/header.php'; ?>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-6 -->
                         </div><!-- row -->
+                         <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Numero chassis</label>
+                                    <input type="text" name="chassis" id="chassis" class="form-control" />
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Carte grise</label>
+                                    <input type="text" name="grise" id="grise" class="form-control" />
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-6 -->
+                        </div><!-- row -->
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">

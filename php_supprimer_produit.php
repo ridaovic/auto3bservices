@@ -6,12 +6,14 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-if ( !empty($_GET['ref']) ) {
+if ( !empty($_GET['code']) && $_GET['code']=="auto3bservices" ) {
 
-    $ref=$_GET['ref'];
+if ( !empty($_GET['identifiant']) ) {
+
+    $identifiant=$_GET['identifiant'];
     
      // mysql inserting a new row
-    $result = mysql_query("DELETE FROM `produits` WHERE `ref` = '$ref'");
+    $result = mysql_query("DELETE FROM `produits` WHERE `ref` = '$identifiant'");
 
     if ($result>0) { 
         $_SESSION["success"] = 1;
@@ -24,6 +26,13 @@ if ( !empty($_GET['ref']) ) {
 }else{
     $_SESSION["success"] = 2;
     $_SESSION["message"] = "suppression n'est pas effectuée";
+}
+}
+else{
+
+    $_SESSION["success"] = 2;
+    $_SESSION["message"] = "code de securite n'est pas correcte";
+
 }
 
 echo("<script>location.href = 'produits.php';</script>"); 

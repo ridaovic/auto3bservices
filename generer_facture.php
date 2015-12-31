@@ -87,14 +87,14 @@ require_once __DIR__ . '/header.php'; ?>
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Quantité</label>
-                                    <input type="number" name="qte[]" class="form-control" value=""/>
+                                    <input type="number" name="qte[]" class="qte form-control" value=""/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-2 -->
                             
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Prix  U.T HT</label>
-                                    <input type="number" name="prix[]" class="form-control" value=""/>
+                                    <input type="number" name="prix[]" class="prix form-control" value=""/>
                                  </div><!-- form-group -->
                             </div><!-- col-sm-2 -->
 
@@ -111,6 +111,9 @@ require_once __DIR__ . '/header.php'; ?>
 
 
                         <div class="row">
+                            <div class="col-sm-6"></div>
+                            <a href="" class="btn btn-info col-sm-2" id="growl-info"><span>0</span> DH</a>
+
                             <div class="col-sm-4 pull-right">
                                <button type="button" class="btn btn-primary btn-block" id="add_col">Ajouter</button>
                             </div></div>

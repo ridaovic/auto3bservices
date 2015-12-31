@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 29 Décembre 2015 à 19:31
+-- Généré le :  Jeu 31 Décembre 2015 à 16:50
 -- Version du serveur :  5.6.26
 -- Version de PHP :  5.6.12
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `designation` (
   `qte` int(11) NOT NULL,
   `prix` int(11) NOT NULL,
   `id_facture` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `designation`
@@ -54,7 +54,31 @@ INSERT INTO `designation` (`id`, `occasion`, `designation`, `qte`, `prix`, `id_f
 (47, 0, 'test4', 4, 4, 10),
 (48, 0, 'test1', 2, 10, 11),
 (49, 1, 'test2', 3, 30, 11),
-(50, 1, 'test3', 3, 40, 11);
+(50, 1, 'test3', 3, 40, 11),
+(51, 0, 'test1', 2, 50, 13),
+(52, 0, 'test33', 2, 10, 13);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `details`
+--
+
+CREATE TABLE IF NOT EXISTS `details` (
+  `id` int(11) NOT NULL,
+  `designation` text NOT NULL,
+  `qte` int(11) NOT NULL,
+  `prix` int(11) NOT NULL,
+  `id_facture` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `details`
+--
+
+INSERT INTO `details` (`id`, `designation`, `qte`, `prix`, `id_facture`) VALUES
+(2, 'ddddd', 2, 7, 3),
+(3, 'testq', 2, 50, 3);
 
 -- --------------------------------------------------------
 
@@ -63,21 +87,17 @@ INSERT INTO `designation` (`id`, `occasion`, `designation`, `qte`, `prix`, `id_f
 --
 
 CREATE TABLE IF NOT EXISTS `devis` (
-  `id` int(11) NOT NULL,
-  `date_devis` date DEFAULT NULL,
-  `date_accord` date DEFAULT NULL,
-  `ht` double NOT NULL,
-  `hta` double NOT NULL,
+  `id` int(25) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_vehicule` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `devis`
 --
 
-INSERT INTO `devis` (`id`, `date_devis`, `date_accord`, `ht`, `hta`, `id_vehicule`) VALUES
-(8, '2015-12-23', '2015-12-31', 20, 30, 1),
-(9, '2015-12-24', '2015-12-31', 120, 10, 1);
+INSERT INTO `devis` (`id`, `created`, `id_vehicule`) VALUES
+(3, '2015-12-31 14:27:07', 2);
 
 -- --------------------------------------------------------
 
@@ -90,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `factures` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `etat` tinyint(1) DEFAULT '0',
   `id_vehicule` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `factures`
@@ -102,7 +122,9 @@ INSERT INTO `factures` (`id`, `created`, `etat`, `id_vehicule`) VALUES
 (8, '2015-12-27 14:33:03', 1, 2),
 (9, '2015-12-27 14:33:31', 0, 1),
 (10, '2015-12-29 17:10:27', 1, 2),
-(11, '2015-12-29 17:16:14', 1, 2);
+(11, '2015-12-29 17:16:14', 1, 2),
+(12, '2015-12-31 02:17:39', 1, 2),
+(13, '2015-12-31 14:11:34', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -123,8 +145,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
 --
 
 INSERT INTO `produits` (`ref`, `nom`, `prix`, `qte`, `qte_min`) VALUES
-('ref1', 'prod1', 8, 17, 14),
-('ref2', 'prod2', 6, 9, 3);
+('ref1', 'prod1', 8, 17, 14);
 
 -- --------------------------------------------------------
 
@@ -159,20 +180,24 @@ CREATE TABLE IF NOT EXISTS `vehicules` (
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `immatriculation` varchar(100) NOT NULL,
+  `chassis` varchar(100) NOT NULL,
+  `carte_grise` varchar(100) NOT NULL,
   `marque` varchar(100) NOT NULL,
   `expere` varchar(100) NOT NULL,
   `assurance` varchar(100) NOT NULL,
   `date_entree` date DEFAULT NULL,
   `date_sortie` date DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `vehicules`
 --
 
-INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `expere`, `assurance`, `date_entree`, `date_sortie`) VALUES
-(1, 'rhanim', 'rida', 'A123456', 'fiat', 'ridaovic', 'saham', '2015-12-24', '2015-12-31'),
-(2, 'abdo', 'saqar', 'bbh123456', 'volvo', 'tesr', 'saham', '2015-12-18', '2015-12-31');
+INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `chassis`, `carte_grise`, `marque`, `expere`, `assurance`, `date_entree`, `date_sortie`) VALUES
+(1, 'rhanim', 'rida', 'A123456', '', '', 'fiat', 'ridaovic', 'saham', '2015-12-24', '2015-12-31'),
+(2, 'abdo', 'saqar', 'bbh123456', '', '', 'volvo', 'tesr', 'saham', '2015-12-18', '2015-12-31'),
+(3, 'kamal', 'dawib', 'bh789456', '', '', 'nissan', 'morad', 'saham', '2015-12-26', '2016-01-03'),
+(8, 'jamal', 'rhanim', 'q123456', '1001111010', 'azer123456', 'nissan', 'badr', 'cinia', '2015-12-26', '2016-01-02');
 
 --
 -- Index pour les tables exportées
@@ -182,6 +207,12 @@ INSERT INTO `vehicules` (`id`, `nom`, `prenom`, `immatriculation`, `marque`, `ex
 -- Index pour la table `designation`
 --
 ALTER TABLE `designation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `details`
+--
+ALTER TABLE `details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -222,17 +253,22 @@ ALTER TABLE `vehicules`
 -- AUTO_INCREMENT pour la table `designation`
 --
 ALTER TABLE `designation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+--
+-- AUTO_INCREMENT pour la table `details`
+--
+ALTER TABLE `details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `devis`
 --
 ALTER TABLE `devis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `factures`
 --
 ALTER TABLE `factures`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
@@ -242,7 +278,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `vehicules`
 --
 ALTER TABLE `vehicules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

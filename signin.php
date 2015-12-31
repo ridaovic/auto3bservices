@@ -1,6 +1,6 @@
 <?php session_start();
 if (!empty($_SESSION['id'])) {
-    header("Location:recherche.php");
+    header("Location:index.php");
 }?>
 
 

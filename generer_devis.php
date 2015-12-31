@@ -11,7 +11,7 @@ require_once __DIR__ . '/header.php'; ?>
             <div class="media-body">
                 <ul class="breadcrumb">
                     <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
-                    <li><a href="produits.php">Factures</a></li>
+                    <li><a href="produits.php">Devis</a></li>
                     <li>Générer un devis</li>
                 </ul>
                 <h4>Générer un devis</h4>
@@ -58,40 +58,47 @@ require_once __DIR__ . '/header.php'; ?>
                             </div><!-- col-sm-2 -->
 
                             <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label class="control-label">Assurance</label>
-                                        <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
-                                    </div><!-- form-group -->
-                                </div><!-- col-sm-2 -->
+                                <div class="form-group">
+                                    <label class="control-label">Assurance</label>
+                                    <input type="text" name="assurance" readonly="readonly" class="form-control" value="<?php echo $vehicule['assurance']; ?>"/>
+                                </div><!-- form-group -->
+                            </div><!-- col-sm-2 -->
+
+            
                         </div><!-- row -->
 
                         <div class="row col">
-                            <div class="col-sm-3">
+                            <div class="col-sm-8">
                                 <div class="form-group">
-                                    <label class="control-label">Montant HT</label>
-                                    <input type="text" name="prix" class="form-control" />
+                                    <label class="control-label">Designation</label>
+                                    <input type="text" name="designation[]" class="form-control" />
                                 </div><!-- form-group -->
                             </div><!-- col-sm-3 -->
-                            <div class="col-sm-3">
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="control-label">Date de devis</label>
-                                    <input type="date" name="created" class="form-control" />
+                                    <label class="control-label">Quantité</label>
+                                    <input type="number" name="qte[]" class="qte form-control" value=""/>
                                 </div><!-- form-group -->
-                            </div><!-- col-sm-3 -->
-                            <div class="col-sm-3">
+                            </div><!-- col-sm-2 -->
+                            
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <label class="control-label">Montant accordé HT</label>
-                                    <input type="text" name="prix_a" class="form-control" />
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-3 -->
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label class="control-label">Date accord du devis</label>
-                                    <input type="date" name="accord" class="form-control" />
-                                </div><!-- form-group -->
-                            </div><!-- col-sm-3 -->
+                                    <label class="control-label">Prix  U.T HT</label>
+                                    <input type="number" name="prix[]" class="prix form-control" value=""/>
+                                 </div><!-- form-group -->
+                            </div><!-- col-sm-2 -->
+
+
+                            
                         </div><!-- row -->
 
+
+                        <div class="row">
+                            <div class="col-sm-4 pull-right">
+                               <button type="button" class="btn btn-primary btn-block" id="add_col2">Ajouter</button>
+                            </div></div>
+                        </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
                         <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Enregestrer">

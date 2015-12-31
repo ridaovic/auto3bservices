@@ -109,7 +109,10 @@ if (empty($_SESSION['id'])) {
             <div class="mainwrapper">
                 <div class="leftpanel"> 
                     <h5 class="leftpanel-title">Navigation</h5>
-                    <ul class="nav nav-pills nav-stacked">                        
+                    <ul class="nav nav-pills nav-stacked">
+
+                        <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/index.php' ) { echo 'active';} ?>"><a href="index.php"><i class="fa fa-home"></i> <span>Accueil</span></a></li>                        
+                        
                         <li class="parent <?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/produits.php' || $_SERVER['REQUEST_URI']  == '/auto3bservices/ajouter_produit.php' ) { echo 'active';} ?>"><a href="produits.php"><i class="fa fa-briefcase"></i> <span>Produits</span></a>
                             <ul class="children">
                                 <li class="<?php if ($_SERVER['REQUEST_URI'] == '/auto3bservices/produits.php') { echo 'active';} ?>"><a href="produits.php">Liste des produits</a></li>

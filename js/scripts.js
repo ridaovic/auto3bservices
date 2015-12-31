@@ -10,7 +10,7 @@ $(document).ready(function() {
             $.post( "php_signin.php", { username: username, password: password }, function( data ) {
 
             if (data.success==1) {
-                window.location.href = "recherche.php";
+                window.location.href = "index.php";
             } else{
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
             };
@@ -231,6 +231,12 @@ $('#add_col').on('click', function(e) {
 
 }); 
 
+$('#add_col2').on('click', function(e) {
+    var col='<div class="row col"><div class="col-sm-8"><div class="form-group"><label class="control-label">Designation</label><input type="text" name="designation[]" class="form-control" /></div><!-- form-group --></div><!-- col-sm-3 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Quantité</label><input type="number" name="qte[]" class="form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --><div class="col-sm-2"><div class="form-group"><label class="control-label">Prix  U.T HT</label><input type="number" name="prix[]" class="prix form-control" value=""/></div><!-- form-group --></div><!-- col-sm-2 --></div><!-- row -->';
+    $('.col').last().after(col);
+
+});
+
 function displayResult(item, val, text) {
     console.log(item);
     console.log(val);
@@ -265,26 +271,30 @@ $('#demo1').typeahead({
 });
 
 
+$('.delete').on('click', function(e) {
+    $('#identifiant').val(this.id);
+}); 
+
 // $( "input[name='prix[]']" ).change(function() {
 // alert('teeed');
 // });
 
-$('.prix').on('keyup', function(e) {
+// $('.prix').on('keyup', function(e) {
 
-alert('tttt');
+// alert('tttt');
 
-// if ( event.which == 13 ) {
-//      event.preventDefault();
-//   }
+// // if ( event.which == 13 ) {
+// //      event.preventDefault();
+// //   }
   
-//   console.log($( ".prix" ).val());
-// });
-// $( ".prix" ).keyup(function( event ) {
-//   if ( event.which == 13 ) {
-//      event.preventDefault();
-//   }
+// //   console.log($( ".prix" ).val());
+// // });
+// // $( ".prix" ).keyup(function( event ) {
+// //   if ( event.which == 13 ) {
+// //      event.preventDefault();
+// //   }
   
-//   console.log($( ".prix" ).val());
- });
+// //   console.log($( ".prix" ).val());
+//  });
 
 });

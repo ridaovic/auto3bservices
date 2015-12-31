@@ -75,8 +75,8 @@ require_once __DIR__ . '/header.php'; ?>
                               <td><?php echo $produit['qte']; ?> </td>
                               <td><?php echo $produit['qte_min']; ?> </td>
                               <td><?php echo $produit['prix']; ?> </td>
-                              <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
-                              <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-trash-o"></i></a></td>
+                              <td class="center"><a class="btn btn-primary blue_b btn-rounded"  href="modifier_produit.php?ref=<?php echo $produit['ref']; ?>"><i class="fa fa-edit"></i></a></td>
+                              <td class="center"><a class="btn btn-danger btn-rounded delete" id="<?php echo $produit['ref']; ?>" data-toggle="modal" data-target=".bs-example-modal"><i class="fa fa-trash-o"></i></a></td>
                     </tr>
                         <?php } ?>
                               
@@ -87,5 +87,30 @@ require_once __DIR__ . '/header.php'; ?>
         <br />
     </div><!-- contentpanel -->
 </div><!-- mainpanel -->
+
+
+
+<section>
+<div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+              <div class="modal-content"><div class="modal-header">
+    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+    <h4 class="modal-title">Entrer le code de securite</h4>
+</div>
+<div class="modal-body">
+<form class="form-inline" method="GET" action="php_supprimer_produit.php">
+  <div class="form-group">
+      <div class="col-sm-8">
+          <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+          <input type="hidden" name="identifiant" id="identifiant" value="">
+      </div>
+   </div><!-- form-group -->
+  <button type="submit" class="btn btn-danger mr5">Supprimer</button>              
+</form>
+
+</div></div>
+            </div>
+        </div>
+</section>
 <?php // include db connect class
 require_once __DIR__ . '/footer.php'; ?>
