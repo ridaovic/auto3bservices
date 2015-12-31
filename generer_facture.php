@@ -87,14 +87,14 @@ require_once __DIR__ . '/header.php'; ?>
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Quantité</label>
-                                    <input type="number" name="qte[]" class="qte form-control" value=""/>
+                                    <input type="number" name="qte[]" class="qte form-control" onkeyup="myFunction()" value=""/>
                                 </div><!-- form-group -->
                             </div><!-- col-sm-2 -->
                             
                             <div class="col-sm-2">
                                 <div class="form-group">
                                     <label class="control-label">Prix  U.T HT</label>
-                                    <input type="number" name="prix[]" class="prix form-control" value=""/>
+                                    <input type="number" name="prix[]" id="prix" class="form-control" onkeyup="myFunction()" value=""/>
                                  </div><!-- form-group -->
                             </div><!-- col-sm-2 -->
 
@@ -112,7 +112,7 @@ require_once __DIR__ . '/header.php'; ?>
 
                         <div class="row">
                             <div class="col-sm-6"></div>
-                            <a href="" class="btn btn-info col-sm-2" id="growl-info"><span>0</span> DH</a>
+                            <a href="" class="btn btn-info col-sm-2" id="growl-info"><span id="total">0</span> DH</a>
 
                             <div class="col-sm-4 pull-right">
                                <button type="button" class="btn btn-primary btn-block" id="add_col">Ajouter</button>
@@ -128,5 +128,23 @@ require_once __DIR__ . '/header.php'; ?>
         </div><!-- row -->
     </div><!-- contentpanel -->
 </div>
+
+<script>
+function myFunction() {
+var qte = document.getElementsByName("qte[]");
+var prix = document.getElementsByName("prix[]");
+
+var i;
+var total=0;
+
+for (i = 0; i < prix.length; i++) {
+    total=total+(prix[i].value*qte[i].value);
+}
+
+document.getElementById("total").innerHTML = total;
+
+}
+</script>
+
 <?php // include db connect class
 require_once __DIR__ . '/footer.php'; ?>
