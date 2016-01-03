@@ -88,14 +88,14 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['total']; ?> DH </td>
                                           <td class="center">
                                             <?php if ($facture['etat']==1): ?>
-                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                              <a class="btn btn-success btn-rounded valid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-valid"><i class="fa fa-thumbs-o-up"></i></a>
                                             <?php else: ?>
-                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                              <a class="btn btn-warning btn-rounded invalid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-invalid"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
                                           </td> 
-                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded pdf" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-pdf"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
-                                          <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-danger btn-rounded delete" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-delete"><i class="fa fa-trash-o"></i></a></td> 
                                       </tr>
                                     <?php } ?> 
                             </tbody>
@@ -134,14 +134,14 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['total']; ?> DH </td>
                                           <td class="center">
                                             <?php if ($facture['etat']==1): ?>
-                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                              <a class="btn btn-success btn-rounded valid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-valid"><i class="fa fa-thumbs-o-up"></i></a>
                                             <?php else: ?>
-                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                              <a class="btn btn-warning btn-rounded invalid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-invalid"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
-                                          </td> 
+                                          </td>
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
-                                          <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-danger btn-rounded delete" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-delete"><i class="fa fa-trash-o"></i></a></td>
                                       </tr>
                                     <?php } ?> 
                             </tbody>
@@ -180,15 +180,15 @@ require_once __DIR__ . '/header.php'; ?>
                                           <td><?php echo $facture['total']; ?> DH </td>
                                           <td class="center">
                                             <?php if ($facture['etat']==1): ?>
-                                              <a class="btn btn-success btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=0"><i class="fa fa-thumbs-o-up"></i></a>
+                                              <a class="btn btn-success btn-rounded valid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-valid"><i class="fa fa-thumbs-o-up"></i></a>
                                             <?php else: ?>
-                                              <a class="btn btn-warning btn-rounded" href="valider.php?id=<?php echo $facture['id']; ?>&etat=1"><i class="fa fa-thumbs-o-down"></i></a>  
+                                              <a class="btn btn-warning btn-rounded invalid" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-invalid"><i class="fa fa-thumbs-o-down"></i></a>  
                                             <?php endif ?>
                                           </td> 
-                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-file-pdf-o"></i></a></td> 
+                                          <td class="center"><a class="btn btn-primary blue_b btn-rounded"  data-toggle="modal" data-target=".bs-example-modal-invalid"><i class="fa fa-file-pdf-o"></i></a></td> 
                                           <td class="center"><a class="btn btn-primary blue_b btn-rounded" href="modifier_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-edit"></i></a></td> 
-                                          <td class="center"><a class="btn btn-danger btn-rounded" href="php_supprimer_facture.php?id=<?php echo $facture['id']; ?>"><i class="fa fa-trash-o"></i></a></td> 
-                                      </tr>
+                                          <td class="center"><a class="btn btn-danger btn-rounded delete" id="<?php echo $facture['id']; ?>" data-toggle="modal" data-target=".bs-example-modal-delete"><i class="fa fa-trash-o"></i></a></td> 
+                                        </tr>
                                     <?php } ?> 
                             </tbody>
                         </table>    
@@ -200,6 +200,95 @@ require_once __DIR__ . '/header.php'; ?>
 
 
             <section>
+
+                <div class="modal fade bs-example-modal-delete" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content"><div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Entrer le code de securite</h4>
+                    </div>
+                      <div class="modal-body">
+                      <form class="form-inline" method="GET" action="php_supprimer_facture.php">
+                      <div class="form-group">
+                      <div class="col-sm-8">
+                      <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+                      <input type="hidden" name="identifiant" id="identifiant" value="">
+                      </div>
+                      </div><!-- form-group -->
+                      <button type="submit" class="btn btn-danger mr5">Supprimer</button>              
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade bs-example-modal-valid" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content"><div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Entrer le code de securite</h4>
+                    </div>
+                      <div class="modal-body">
+                      <form class="form-inline" method="GET" action="valider.php">
+                      <div class="form-group">
+                      <div class="col-sm-8">
+                      <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+                      <input type="hidden" name="id" id="id1" value="">
+                      <input type="hidden" name="etat" id="etat" value="0">
+                      </div>
+                      </div><!-- form-group -->
+                      <button type="submit" class="btn btn-danger mr5">Confirmer</button>              
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="modal fade bs-example-modal-invalid" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content"><div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Entrer le code de securite</h4>
+                    </div>
+                      <div class="modal-body">
+                      <form class="form-inline" method="GET" action="valider.php">
+                      <div class="form-group">
+                      <div class="col-sm-8">
+                      <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+                      <input type="hidden" name="id" id="id2" value="">
+                      <input type="hidden" name="etat" id="etat" value="1">
+                      </div>
+                      </div><!-- form-group -->
+                      <button type="submit" class="btn btn-danger mr5">Confirmer</button>              
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="modal fade bs-example-modal-pdf" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                    <div class="modal-content"><div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">Entrer le code de securite</h4>
+                    </div>
+                      <div class="modal-body">
+                      <form class="form-inline" method="GET" action="pdf.php">
+                      <div class="form-group">
+                      <div class="col-sm-8">
+                      <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+                      <input type="hidden" name="id" id="id3" value="">
+                      </div>
+                      </div><!-- form-group -->
+                      <button type="submit" class="btn btn-danger mr5">Confirmer</button>              
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">

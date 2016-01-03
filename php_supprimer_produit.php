@@ -6,7 +6,7 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
-if ( !empty($_GET['code']) && $_GET['code']=="auto3bservices" ) {
+if ( !empty($_GET['code']) && $_GET['code']=="FsMktZ" ) {
 
 if ( !empty($_GET['identifiant']) ) {
 

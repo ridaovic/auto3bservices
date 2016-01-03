@@ -143,7 +143,17 @@ padding:10px 5px;
 //      $html2pdf->setModeDebug();
         $html2pdf->setDefaultFont('Arial');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        $html2pdf->Output('facture.pdf');
+        //$html2pdf->Output('facture.pdf');
+
+        $content_PDF = $html2pdf->Output('', true); 
+        require_once(dirname(__FILE__).'/pjmail/pjmail.class.php'); 
+         $mail = new PJmail(); 
+         $mail->setAllFrom('webmaster@mon_site.net', "Mon site perso"); 
+         $mail->addrecipient('rida.rhanim@gmail.com'); 
+         $mail->addsubject("Exemple envoie de PDF"); 
+         $mail->text = "Ceci est un exemple d'envoie de fichier PDF"; 
+         $mail->addbinattachement("mon_document.pdf", $content_PDF); 
+         $res = $mail->sendmail(); 
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

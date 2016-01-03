@@ -86,10 +86,11 @@ $(document).ready(function() {
         var qte = $('#qte').val();
         var qte_min = $('#qte_min').val();
         var prix = $('#prix').val();
+        var code = $('#code').val();
         
         if (ref!="" && nom!="" && qte!="" && qte_min!="" && prix!="") {
 
-            $.post( "php_ajouter_produit.php", { ref : ref, nom : nom , qte : qte , qte_min : qte_min , prix : prix}, function( data ) {
+            $.post( "php_ajouter_produit.php", { ref : ref, nom : nom , qte : qte , qte_min : qte_min , prix : prix , code : code}, function( data ) {
 
             if (data.success==1) {
                 
@@ -98,6 +99,7 @@ $(document).ready(function() {
                 $('#qte').val("");
                 $('#qte_min').val("");
                 $('#prix').val("");
+                $('#code').val("");
 
                 $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
             } else{
@@ -109,6 +111,8 @@ $(document).ready(function() {
         }else{
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
         }
+
+        $('.bs-example-modal').modal('hide')
     });
     
 
@@ -165,10 +169,12 @@ $(document).ready(function() {
         var qte = $('#qte').val();
         var qte_min = $('#qte_min').val();
         var prix = $('#prix').val();
+        var code = $('#code').val();
+
         
         if (ref!="" && nom!="" && qte!="" && qte_min!="" && prix!="") {
 
-            $.post( "php_modifier_produit.php", { ref : ref, nom : nom , qte : qte , qte_min : qte_min , prix : prix}, function( data ) {
+            $.post( "php_modifier_produit.php", { ref : ref, nom : nom , qte : qte , qte_min : qte_min , prix : prix, code : code}, function( data ) {
 
             if (data.success==1) {
                 $('#erreur').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>"+data.message+"</strong></div>")
@@ -181,6 +187,8 @@ $(document).ready(function() {
         }else{
                 $('#erreur').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><strong>Tous les champs sont obligatoires</strong></div>")      
         }
+
+        $('.bs-example-modal').modal('hide')
     });    
 
 $('#edit_facture').on('click', function(e) {
@@ -273,28 +281,23 @@ $('#demo1').typeahead({
 
 $('.delete').on('click', function(e) {
     $('#identifiant').val(this.id);
-}); 
+});
 
-// $( "input[name='prix[]']" ).change(function() {
-// alert('teeed');
-// });
+$('.valid').on('click', function(e) {
+    $('#id1').val(this.id);
+});
 
-// $('.prix').on('keyup', function(e) {
+$('.invalid').on('click', function(e) {
+    $('#id2').val(this.id);
+});
 
-// alert('tttt');
+$('.pdf').on('click', function(e) {
+    $('#id3').val(this.id);
+});
 
-// // if ( event.which == 13 ) {
-// //      event.preventDefault();
-// //   }
-  
-// //   console.log($( ".prix" ).val());
-// // });
-// // $( ".prix" ).keyup(function( event ) {
-// //   if ( event.which == 13 ) {
-// //      event.preventDefault();
-// //   }
-  
-// //   console.log($( ".prix" ).val());
-//  });
+
+$('#confirm_facture,#confirm_devis').on('click', function(e) {
+    $( "#target" ).submit();
+});
 
 });

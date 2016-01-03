@@ -91,26 +91,26 @@ require_once __DIR__ . '/header.php'; ?>
 
 
 <section>
-<div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog">
-              <div class="modal-content"><div class="modal-header">
-    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-    <h4 class="modal-title">Entrer le code de securite</h4>
-</div>
-<div class="modal-body">
-<form class="form-inline" method="GET" action="php_supprimer_produit.php">
-  <div class="form-group">
-      <div class="col-sm-8">
-          <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
-          <input type="hidden" name="identifiant" id="identifiant" value="">
+  <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content"><div class="modal-header">
+      <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+      <h4 class="modal-title">Entrer le code de securite</h4>
       </div>
-   </div><!-- form-group -->
-  <button type="submit" class="btn btn-danger mr5">Supprimer</button>              
-</form>
-
-</div></div>
-            </div>
+        <div class="modal-body">
+        <form class="form-inline" method="GET" action="php_supprimer_produit.php">
+        <div class="form-group">
+        <div class="col-sm-8">
+        <input type="text" name="code" style="width: 400px !important;" placeholder="code de securite" class="form-control">
+        <input type="hidden" name="identifiant" id="identifiant" value="">
         </div>
+        </div><!-- form-group -->
+        <button type="submit" class="btn btn-danger mr5">Supprimer</button>              
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <?php // include db connect class
 require_once __DIR__ . '/footer.php'; ?>

@@ -21,7 +21,7 @@ require_once __DIR__ . '/header.php'; ?>
     <div class="contentpanel">
         <div class="row">
             <div class="col-md-12"> 
-                <form>
+                <form id="target">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="mb30"  id="erreur"></div>
@@ -72,7 +72,7 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="edit_produit">Modifier</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal">Modifier</button>
                     </div><!-- panel-footer -->
                     </form>
                 </div><!-- panel -->
@@ -80,5 +80,29 @@ require_once __DIR__ . '/header.php'; ?>
         </div><!-- row -->
     </div><!-- contentpanel -->
 </div>
+
+<section>
+  <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content"><div class="modal-header">
+      <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+      <h4 class="modal-title">Entrer le code de securite</h4>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+            <div class="col-sm-8">
+            <input type="text" name="code" id="code" placeholder="code de securite" class="form-control">
+            </div>
+            <div class="col-sm-4">
+            <button type="button" class="btn btn-danger mr5" id="edit_produit">Confirmer</button>              
+            </div>
+            </div><!-- form-group -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <?php // include db connect class
 require_once __DIR__ . '/footer.php'; ?>

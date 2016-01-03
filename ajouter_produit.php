@@ -65,7 +65,7 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <button type="button" class="btn btn-primary" id="add_produit" style="background-color:#1C65A5;">Ajouter</button>
+                        <button type="button" class="btn btn-primary" style="background-color:#1C65A5;" data-toggle="modal" data-target=".bs-example-modal">Ajouter</button>
                         <button type="reset" class="btn btn-default">Annuler</button>
                     </div><!-- panel-footer -->
                     </form>
@@ -74,5 +74,28 @@ require_once __DIR__ . '/header.php'; ?>
         </div><!-- row -->
     </div><!-- contentpanel -->
 </div>
+
+
+<section>
+  <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content"><div class="modal-header">
+      <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+      <h4 class="modal-title">Entrer le code de securite</h4>
+      </div>
+        <div class="modal-body">
+            <div class="form-group">
+            <div class="col-sm-8">
+            <input type="text" name="code" id="code" placeholder="code de securite" class="form-control">
+            </div>
+            <div class="col-sm-4">
+            <button type="button" class="btn btn-danger mr5"  id="add_produit" >Confirmer</button>              
+            </div>
+            </div><!-- form-group -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <?php // include db connect class
 require_once __DIR__ . '/footer.php'; ?>

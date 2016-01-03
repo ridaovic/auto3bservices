@@ -5,6 +5,8 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
+if ( !empty($_POST['code']) && ($_GET['code']=="FsMktZ" || $_GET['code']=="cYEcHF") ) {
+
 if ( !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min']) && !empty($_POST['prix']) ) {
 
     $ref=$_POST['ref'];
@@ -27,7 +29,17 @@ if ( !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min'])
 }else{
     $response["success"] = 2;
     $response["message"] = "Tous les champs sont obligatoires";
-}        
+} 
+
+}
+else{
+
+    $response["success"] = 2;
+    $response["message"] = "code de securite n'est pas correcte";
+
+}
+
+       
 
 echo json_encode($response);
 

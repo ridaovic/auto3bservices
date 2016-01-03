@@ -5,11 +5,10 @@ require_once __DIR__ . '/functions.php';
 
 // authenification script
 
-$response = array(); 
 
-echo(count($_POST['designation']));
+if ( !empty($_POST['code']) && ($_GET['code']=="FsMktZ" || $_GET['code']=="cYEcHF") ) {
 
-if (!empty($_POST['facture'])) {
+    if (!empty($_POST['facture'])) {
     $facture=$_POST['facture'];
     // mysql inserting a new row
     $result = mysql_query("UPDATE factures SET `created` = CURRENT_TIMESTAMP WHERE `id` = $facture");
@@ -35,6 +34,13 @@ if (!empty($_POST['facture'])) {
 }else{
     $_SESSION["success"] = 2;
     $_SESSION["message"] = "modification n'est pas effectuée";
+}
+}
+else{
+
+    $_SESSION["success"] = 2;
+    $_SESSION["message"] = "code de securite n'est pas correcte";
+
 }
 
 echo("<script>location.href = 'factures.php';</script>");

@@ -21,7 +21,7 @@ require_once __DIR__ . '/header.php'; ?>
 <div class="contentpanel">
         <div class="row">
             <div class="col-md-12"> 
-                <form action="php_modifier_facture.php" method="POST">
+                <form action="php_modifier_facture.php" method="POST" id="target">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="mb30"  id="erreur"></div>
@@ -101,8 +101,29 @@ require_once __DIR__ . '/header.php'; ?>
                         </div><!-- row -->
                     </div><!-- panel-body -->
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-primary  btn-lg btn-block" id="confirm_facture" value="Modifier">
+                        <input type="button" class="btn btn-primary  btn-lg btn-block" data-toggle="modal" data-target=".bs-example-modal" value="Modifier">
                     </div><!-- panel-footer -->
+                    <section>
+                      <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                          <div class="modal-content"><div class="modal-header">
+                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                          <h4 class="modal-title">Entrer le code de securite</h4>
+                          </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                <div class="col-sm-8">
+                                <input type="text" name="code" id="code" placeholder="code de securite" class="form-control">
+                                </div>
+                                <div class="col-sm-4">
+                                <button type="button" class="btn btn-danger mr5"  id="confirm_facture" >Confirmer</button>              
+                                </div>
+                                </div><!-- form-group -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
                     </form>
                 </div><!-- panel -->
             </div><!-- col-md-6 --> 

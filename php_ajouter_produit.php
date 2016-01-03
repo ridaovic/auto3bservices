@@ -7,6 +7,9 @@ require_once __DIR__ . '/functions.php';
 
 $response = array(); 
 
+
+if ( !empty($_POST['code']) && ($_GET['code']=="FsMktZ" || $_GET['code']=="cYEcHF") ) {
+
 if ( !empty($_POST['ref']) && !empty($_POST['nom']) && !empty($_POST['qte']) && !empty($_POST['qte_min']) && !empty($_POST['prix']) ) {
 
     if($_POST['qte'] < $_POST['qte_min']){
@@ -50,6 +53,15 @@ if ( !empty($_POST['ref']) && !empty($_POST['nom']) && !empty($_POST['qte']) && 
     
 
 }        
+
+
+}else{
+
+    $response["success"] = 2;
+    $response["message"] = "code de securite n'est pas correcte";
+
+}
+
 
 echo json_encode($response);
 
